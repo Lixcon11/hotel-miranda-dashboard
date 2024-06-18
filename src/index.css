@@ -7,3 +7,22 @@ html, * {
 body { 
   min-width: 320px;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+
+  &.photo {
+    height: 50px;
+    width: 50px;
+  }
+}
