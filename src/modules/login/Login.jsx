@@ -1,7 +1,6 @@
-import { useNavigate } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 
 const Login = ({ auth, setAuth, AUTH_KEY }) => {
-    const navigate = useNavigate()
 
     const submitHandler = e => {
         e.preventDefault();
@@ -15,9 +14,9 @@ const Login = ({ auth, setAuth, AUTH_KEY }) => {
             <>
                 <h1>Login</h1>
                 <form onSubmit={submitHandler}>
-                    <label for="name">Name</label>
+                    <label htmlFor="name">Name</label>
                     <input name="name" type="text" ></input>
-                    <label for="password">Password</label>
+                    <label htmlFor="password">Password</label>
                     <input name="password" type="text"></input>
                     <input type="submit"></input>
                 </form>
@@ -25,7 +24,7 @@ const Login = ({ auth, setAuth, AUTH_KEY }) => {
         )
     }
     else {
-        navigate("/")
+        return <Navigate to="/"/>
     }
 }
 

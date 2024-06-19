@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, useNavigate } from  "react-router-dom"
+import { BrowserRouter, Navigate, Route, Routes } from  "react-router-dom"
 import { Bookings } from "./modules/bookings/components/Bookings"
 import { Dashboard } from "./modules/dashboard/components/Dashboard"
 import { Rooms } from "./modules/rooms/components/Rooms"
@@ -29,23 +29,28 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<PrivateRoute auth={auth}><Dashboard/></PrivateRoute>}/>
+          <Route path="/" element={<PrivateRoute auth={auth}><Dashboard setAuth={setAuth}/></PrivateRoute>}/>
+
           <Route path="bookings" element={<PrivateRoute auth={auth}><Bookings/></PrivateRoute>}/>
           <Route path="bookings/create" element={<PrivateRoute auth={auth}><CreateBooking/></PrivateRoute>}/>
           <Route path="bookings/:bookingId" element={<PrivateRoute auth={auth}><UserDetails/></PrivateRoute>}/>
           <Route path="bookings/:bookingId/edit" element={<PrivateRoute auth={auth}><EditAny/></PrivateRoute>}/>
+
           <Route path="rooms" element={<PrivateRoute auth={auth}><Rooms/></PrivateRoute>}/>
           <Route path="rooms/create" element={<PrivateRoute auth={auth}><CreateUser/></PrivateRoute>}/>
           <Route path="rooms/:roomId" element={<PrivateRoute auth={auth}><UserDetails/></PrivateRoute>}/>
           <Route path="rooms/:roomId/edit" element={<PrivateRoute auth={auth}><EditAny/></PrivateRoute>}/>
+
           <Route path="users" element={<PrivateRoute auth={auth}><Users/></PrivateRoute>}/>
           <Route path="users/create" element={<PrivateRoute auth={auth}><CreateUser/></PrivateRoute>}/>
           <Route path="users/:userId" element={<PrivateRoute auth={auth}><UserDetails/></PrivateRoute>}/>
           <Route path="users/:userId/edit" element={<PrivateRoute auth={auth}><EditAny/></PrivateRoute>}/>
+
           <Route path="contact" element={<PrivateRoute auth={auth}><Contact/></PrivateRoute>}/>
           <Route path="contact/create" element={<PrivateRoute auth={auth}><CreateUser/></PrivateRoute>}/>
           <Route path="contact/:contactId" element={<PrivateRoute auth={auth}><UserDetails/></PrivateRoute>}/>
           <Route path="contact/:contactId/edit" element={<PrivateRoute auth={auth}><EditAny/></PrivateRoute>}/>
+
           <Route path="/login" element={<Login auth={auth} setAuth={setAuth} AUTH_KEY={AUTH_KEY} />}/>
         </Routes>
       </BrowserRouter>
@@ -54,9 +59,8 @@ const App = () => {
 }
 
 const PrivateRoute =({children, auth}) => {
-  const navigate = useNavigate();
   if(!auth) {
-    navigate("/login")
+    return <Navigate to="/login"/>
   }
   else {
     return children;
