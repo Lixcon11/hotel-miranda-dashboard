@@ -3,29 +3,11 @@ import { useEffect, useState } from "react";
 import { Table } from "../../components/Table";
 import { NavLink } from "react-router-dom";
 import { Back } from "../../components/Back";
+import { sortBy } from "../../../functions/sortBy";
 
 const Users = () => {
-    const [sortBy, setSortBy] = useState ("name");
-    let newData = userData;
-
-    if(sortBy === "name") {
-        newData.sort(function (a, b) {
-            if (a.name < b.name) {
-              return -1;
-            }
-            if (a.name > b.name) {
-              return 1;
-            }
-            return 0;
-        });
-    }
-    else if (sortBy === "date") {
-        newData.sort(function(a, b) {
-            let dateA = new Date(a.start_date);
-            let dateB = new Date(b.start_date);
-            return dateA - dateB;
-        });
-    }
+    const [sort, setSort] = useState ("name");
+    let newData = sortBy(sort, userData);
     const [data, setData] = useState(newData);
     const [filter, setFilter] = useState ();
     const columns = [
@@ -65,7 +47,7 @@ const Users = () => {
         }
 
         setData(otherData);
-    }, [filter, sortBy])
+    }, [filter])
 
     return (
         <>
@@ -78,8 +60,8 @@ const Users = () => {
             <button onClick={() => setFilter("active")}>Active</button>
             <button onClick={() => setFilter("inactive")}>Inactive</button>
             <br/>
-            <button onClick={() => setSortBy("date")}>Start Date</button>
-            <button onClick={() => setSortBy("name")}>Name</button>
+            <button onClick={() => setSort("date")}>Start Date</button>
+            <button onClick={() => setSort("name")}>Name</button>
             <Table data={data} columns={columns}></Table>
         </>
     )
