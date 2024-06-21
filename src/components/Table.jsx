@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const StyledTable = styled.table`
     background-color: white;
+    width: 80%;
 
     thead {
         font-size: 18px;
@@ -16,7 +17,8 @@ const StyledTable = styled.table`
     }
 
     th, td {
-        padding: 7px
+        padding: 7px;
+        text-align: center;
     }
 `
 
