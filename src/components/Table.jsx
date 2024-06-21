@@ -1,9 +1,28 @@
 /* eslint-disable react/prop-types */
 import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+
+const StyledTable = styled.table`
+    background-color: white;
+
+    thead {
+        font-size: 18px;
+        font-weight: 600;
+        color: #393939;
+    }
+
+    tr {
+        border: 3px solid red;
+    }
+
+    th, td {
+        padding: 7px
+    }
+`
 
 const Table = ({data, columns}) => {
     return (
-        <table>
+        <StyledTable>
             <thead>
                 <tr>
                 {columns.map((column, i) => (
@@ -21,7 +40,7 @@ const Table = ({data, columns}) => {
                 </tr>
                 )}
             </tbody>
-        </table>
+        </StyledTable>
     )
 }
 

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import contactData from "../data/contactData.json"
-import { Table } from "../../components/Table";
+import { Table } from "../../../components/Table";
 import { sortBy } from "../../../functions/sortBy";
-import { columns } from "../functions/columns";
-import { Back } from "../../components/Back";
+import { Header } from "../../../components/Header";
+import { Display } from "../../../components/Display";
+import { Columns } from "./Columns";
 
 const Contact = () => {
     let newData = sortBy("date", contactData);
@@ -11,9 +12,10 @@ const Contact = () => {
 
     return (
         <>
-            <h1>Contact</h1>
-            <Back/>
-            <Table data={data} columns={columns}></Table>
+            <Header>Contact</Header>
+            <Display>
+                <Table data={data} columns={Columns}/>
+            </Display>
         </>
     )
 }

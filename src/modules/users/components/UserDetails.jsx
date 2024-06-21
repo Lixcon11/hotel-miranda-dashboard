@@ -1,6 +1,6 @@
 
 import { useParams } from "react-router-dom";
-import { DeatilsOfAny } from "../../components/DetailsOfAny";
+import { DeatilsOfAny } from "../../../components/DetailsOfAny";
 import userData from "../data/usersData.json"
 
 const UserDetails = () => {

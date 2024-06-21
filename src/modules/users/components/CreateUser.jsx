@@ -1,4 +1,4 @@
-import { CreateAny } from "../../components/CreateAny"
+import { CreateAny } from "../../../components/CreateAny"
 
 const CreateUser = () => {
     return (
