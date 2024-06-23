@@ -14,18 +14,33 @@ a {
   color: inherit;
 }
 
+table, button, img {
+  border-radius: 12px;
+}
+
+button {
+  padding: 8px 16px;
+}
+
 .inline-block {
   display: inline-block;
+}
+
+.inline {
+  display: inline;
+}
+
+.block {
+  display: block;
+}
+
+.dis {
+  display: flex;
 }
 
 img {
   width: 100%;
   object-fit: cover;
-
-  &.photo {
-    height: 50px;
-    width: 50px;
-  }
 }
 
 :root {

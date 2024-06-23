@@ -30,20 +30,24 @@ const Users = () => {
         }
 
         setData(otherData);
-    }, [filter])
+    }, [filter, sort])
 
     return (
         <>
             <Header>Users</Header>
             <Display>
-                <button><NavLink to="./create">New user</NavLink></button>
-                <br/>
-                <button onClick={() => setFilter("")}>All</button>
-                <button onClick={() => setFilter("active")}>Active</button>
-                <button onClick={() => setFilter("inactive")}>Inactive</button>
-                <br/>
-                <button onClick={() => setSort("date")}>Start Date</button>
-                <button onClick={() => setSort("name")}>Name</button>
+                <div>
+                    <div>
+                        <button onClick={() => setFilter("")}>All</button>
+                        <button onClick={() => setFilter("active")}>Active</button>
+                        <button onClick={() => setFilter("inactive")}>Inactive</button>
+                    </div>
+                    <div>
+                        <button onClick={() => setSort("date")}>Start Date</button>
+                        <button onClick={() => setSort("name")}>Name</button>
+                        <button><NavLink to="./create">New user</NavLink></button>
+                    </div>
+                </div>
                 <Table data={data} columns={Columns}/>
             </Display>
         </>

@@ -1,11 +1,31 @@
+import styled from "styled-components";
+
+const Name = styled.div`
+display: flex;
+
+    img {
+        height: 50px;
+        width: 50px;
+        margin-right: 10px;
+    }
+
+    p {
+        white-space:nowrap;
+    }
+`
+
+
+
 const Columns = [
     {label: "Name", display: user => (
         <>
-            <img src={`${user.photo}`} className="photo"></img>
-            <div className="inline-block">
-                <p>{user.name}</p>
-                <p>{user.start_date}</p>
-            </div>
+            <Name>
+                <img src={user.photo}></img>
+                <div>
+                    <p>{user.name}</p>
+                    <p>{user.start_date}</p>
+                </div>
+            </Name>
         </>
     )},
     {label: "Job Desk", property: "description"},

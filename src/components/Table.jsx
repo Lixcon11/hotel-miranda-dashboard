@@ -4,21 +4,36 @@ import styled from "styled-components";
 
 const StyledTable = styled.table`
     background-color: white;
-    width: 80%;
+    width: 100%;
+    margin-top: 25px;
+    border-collapse: collapse;
 
     thead {
         font-size: 18px;
         font-weight: 600;
         color: #393939;
+        text-align: left;
     }
 
-    tr {
-        border: 3px solid red;
+    td, th {
+        padding: 10px 15px;
     }
 
-    th, td {
-        padding: 7px;
-        text-align: center;
+    tr { 
+        border: solid var(--grey);
+        border-width-bottom: 2px;
+
+    }
+
+    tbody {
+
+        tr:hover {
+            box-shadow: 0px 4px 30px #0000001A;
+        }
+    
+        tr:last-child {
+        border-bottom: none;
+        }
     }
 `
 
