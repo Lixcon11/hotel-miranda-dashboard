@@ -27,17 +27,35 @@ height: 50px;
 height: 120px;
 }
 `
+const Space = styled.section`
+margin-left: 120px;
+padding: 50px;
+background-color: var(--grey);
+//width: 100%;
+
+    > div {
+        display: flex;
+        justify-content: space-between;
+    }
+
+@media only screen and (min-width: 1000px) {
+margin-left: 345px;
+}
+`
 
 
-const Header = ({ children }) => {
+const Page = ({ children, title }) => {
     return(
         <>
             <StyledHeader>
-                <h1>{children}</h1>
+                <h1>{title}</h1>
             </StyledHeader>
             <Filler></Filler>
+            <Space>
+                {children}
+            </Space>
         </>
     )
 }
 
-export { Header }
+export { Page }

@@ -1,31 +1,15 @@
-import styled from "styled-components";
-
-const Name = styled.div`
-display: flex;
-
-    img {
-        height: 50px;
-        width: 50px;
-        margin-right: 10px;
-    }
-
-    p {
-        white-space:nowrap;
-    }
-`
-
-
+import { ImageContainerTable } from "../../../styles/ImageContainerTable";
 
 const Columns = [
     {label: "Name", display: user => (
         <>
-            <Name>
+            <ImageContainerTable>
                 <img src={user.photo}></img>
                 <div>
                     <p>{user.name}</p>
                     <p>{user.start_date}</p>
                 </div>
-            </Name>
+            </ImageContainerTable>
         </>
     )},
     {label: "Job Desk", property: "description"},

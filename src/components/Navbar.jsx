@@ -1,7 +1,7 @@
 import { NavLink, Navigate, Outlet, useLocation } from "react-router-dom"
 import styled from "styled-components"
 
-const StyledSidebar = styled.div`
+const StyledSidebar = styled.nav`
   height: 100%;
   width: 120px;
   position: fixed;
@@ -43,17 +43,5 @@ const Navbar = () => {
         </>
     )
 }
-
-const StyledNavbar = styled(Navbar)`
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
-`
 
 export {Navbar}

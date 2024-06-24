@@ -13,6 +13,10 @@ const StyledTable = styled.table`
         font-weight: 600;
         color: #393939;
         text-align: left;
+
+        tr {
+            border-width: 0px 0px 2px 0px;
+        }
     }
 
     td, th {
@@ -21,8 +25,7 @@ const StyledTable = styled.table`
 
     tr { 
         border: solid var(--grey);
-        border-width-bottom: 2px;
-
+        border-width: 0px 0px 1px 0px;
     }
 
     tbody {

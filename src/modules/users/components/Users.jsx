@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import { Table } from "../../../components/Table";
 import { NavLink } from "react-router-dom";
 import { sortBy } from "../../../functions/sortBy";
-import { Header } from "../../../components/Header";
-import { Display } from "../../../components/Display";
 import { Columns } from "./Columns";
+import { Page } from "../../../components/Page";
 
 const Users = () => {
     const [sort, setSort] = useState ("name");
@@ -33,9 +32,8 @@ const Users = () => {
     }, [filter, sort])
 
     return (
-        <>
-            <Header>Users</Header>
-            <Display>
+
+        <Page title="Users">
                 <div>
                     <div>
                         <button onClick={() => setFilter("")}>All</button>
@@ -45,12 +43,11 @@ const Users = () => {
                     <div>
                         <button onClick={() => setSort("date")}>Start Date</button>
                         <button onClick={() => setSort("name")}>Name</button>
-                        <button><NavLink to="./create">New user</NavLink></button>
+                        <button><NavLink to="./create">+ New User</NavLink></button>
                     </div>
                 </div>
                 <Table data={data} columns={Columns}/>
-            </Display>
-        </>
+        </Page>
     )
 }
 

@@ -1,18 +1,21 @@
+import { ImageContainerTable } from "../../../styles/ImageContainerTable";
+
 const Columns = [
     {label: "Room Name", display: room => (
         <>
-            <img src={`${room.photo_1}`} className="photo"></img>
-            <div className="inline-block">
-                <p>{room.room_number}</p>
-            </div>
+            <ImageContainerTable>
+                <img src={room.photo_1}></img>
+                <div>
+                    <p>{room.room_number}</p>
+                </div>
+            </ImageContainerTable>
         </>
     )},
     {label: "Bead Type", property: "room_type"},
-    {label: "Amenities", property: "amenities"},
     {label: "Price", property: "price"},
     {label: "Offer Price ", display: room => (
         <>
-            {`${room.discount} %`}
+            {`${room.discount}%`}
         </>
     )},
 ];

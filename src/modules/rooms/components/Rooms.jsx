@@ -1,14 +1,13 @@
 import { useState } from "react"
-import { Display } from "../../../components/Display"
-import { Header } from "../../../components/Header"
 import { Table } from "../../../components/Table"
 import rooomsData from "../data/roomsData.json"
 import { Columns } from "./Columns"
+import { Page } from "../../../components/Page"
 
 const Rooms = () => {
     let newData = rooomsData;
     const [data, setData] = useState(newData);
-
+    /*
     const columns = [
         {label: "Room Name", display: room => (
             <>
@@ -28,13 +27,12 @@ const Rooms = () => {
                 {`${room.discount} %`}
             </>
         )},
-    ];
+    ];*/
     return (
         <>
-            <Header>Rooms</Header>
-            <Display>
-                <Table data={data} columns={columns}/>
-            </Display>
+            <Page title="Rooms">
+                <Table data={data} columns={Columns}/>
+            </Page>
         </>
     )
 }

@@ -2,6 +2,7 @@
 import { useParams } from "react-router-dom";
 import { DeatilsOfAny } from "../../../components/DetailsOfAny";
 import userData from "../data/usersData.json"
+import { Page } from "../../../components/Page";
 
 const UserDetails = () => {
     const { userId } = useParams();
@@ -9,7 +10,9 @@ const UserDetails = () => {
 
     return (
         <>
-            <DeatilsOfAny user={user}/>
+            <Page>
+                <DeatilsOfAny user={user}/>
+            </Page>
         </>
     )
 }

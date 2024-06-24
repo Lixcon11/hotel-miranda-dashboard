@@ -1,12 +1,9 @@
-import { Header } from "../../../components/Header"
-import { Navbar } from "../../../components/Navbar"
+import { Page } from "../../../components/Page"
 
 const Dashboard = ({ setAuth }) => {
     return (
         <>
-            <Header>
-                 Dashboard
-            </Header>
+            <Page title="Dashboard"></Page>
         </>
     )
 }
