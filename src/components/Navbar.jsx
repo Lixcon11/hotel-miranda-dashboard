@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { NavLink, Navigate, Outlet, useLocation } from "react-router-dom"
 import styled from "styled-components"
+import { AuthContext } from "./AuthProvider"
 
 const StyledSidebar = styled.nav`
   height: 100%;
@@ -27,6 +29,12 @@ const StyledSidebar = styled.nav`
 
 const Navbar = () => {
 
+    const { authDispatch } = useContext(AuthContext);
+
+    const buttonHandler = () => {
+        authDispatch({type: "logOut"})
+    }
+
     if(useLocation().pathname === "/") {
         return <Navigate to="/dashboard"/>
     }
@@ -38,6 +46,7 @@ const Navbar = () => {
                 <NavLink to="/rooms">Rooms</NavLink><br/>
                 <NavLink to="/users">Users</NavLink><br/>
                 <NavLink to="/contact">Contact</NavLink><br/>
+                <button onClick={buttonHandler}>Logout</button>
             </StyledSidebar>
             <Outlet></Outlet>
         </>

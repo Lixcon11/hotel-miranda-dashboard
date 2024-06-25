@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from  "react-router-dom"
+import { BrowserRouter, Route, Routes } from  "react-router-dom"
 import { Bookings } from "./modules/bookings/components/Bookings"
 import { Dashboard } from "./modules/dashboard/components/Dashboard"
 import { Rooms } from "./modules/rooms/components/Rooms"
@@ -8,65 +8,46 @@ import { Login } from "./modules/login/Login"
 import { UserDetails } from "./modules/users/components/UserDetails"
 import { EditAny } from "./components/EditAny"
 import { CreateUser } from "./modules/users/components/CreateUser"
-import { useEffect, useState } from "react"
 import { CreateBooking } from "./modules/bookings/components/CreateBooking"
 import { Navbar } from "./components/Navbar"
-
-const AUTH_KEY = {name: "test", password: "test"}
+import { AuthProvider } from "./components/AuthProvider"
+import { PrivateRoute } from "./components/PrivateRoute"
 
 const App = () => {
-  const [auth, setAuth] = useState(localStorage.getItem("AUTH_KEY") !==null)
-
-  useEffect(() => {
-    if(auth) {
-      localStorage.setItem("AUTH_KEY", AUTH_KEY);
-    }
-    else {
-      localStorage.removeItem("AUTH_KEY")
-    }
-  }, [auth])
-
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<PrivateRoute auth={auth}><Navbar/></PrivateRoute>}>
-            <Route path="dashboard" element={<PrivateRoute auth={auth}><Dashboard setAuth={setAuth}/></PrivateRoute>}/>
-            <Route path="bookings" element={<PrivateRoute auth={auth}><Bookings/></PrivateRoute>}/>
-            <Route path="bookings/create" element={<PrivateRoute auth={auth}><CreateBooking/></PrivateRoute>}/>
-            <Route path="bookings/:bookingId" element={<PrivateRoute auth={auth}><UserDetails/></PrivateRoute>}/>
-            <Route path="bookings/:bookingId/edit" element={<PrivateRoute auth={auth}><EditAny/></PrivateRoute>}/>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<PrivateRoute><Navbar/></PrivateRoute>}>
+              <Route path="dashboard" element={<Dashboard/>}/>
+              <Route path="bookings" element={<Bookings/>}/>
+              <Route path="bookings/create" element={<CreateBooking/>}/>
+              <Route path="bookings/:bookingId" element={<UserDetails/>}/>
+              <Route path="bookings/:bookingId/edit" element={<EditAny/>}/>
 
-            <Route path="rooms" element={<PrivateRoute auth={auth}><Rooms/></PrivateRoute>}/>
-            <Route path="rooms/create" element={<PrivateRoute auth={auth}><CreateUser/></PrivateRoute>}/>
-            <Route path="rooms/:roomId" element={<PrivateRoute auth={auth}><UserDetails/></PrivateRoute>}/>
-            <Route path="rooms/:roomId/edit" element={<PrivateRoute auth={auth}><EditAny/></PrivateRoute>}/>
+              <Route path="rooms" element={<Rooms/>}/>
+              <Route path="rooms/create" element={<CreateUser/>}/>
+              <Route path="rooms/:roomId" element={<UserDetails/>}/>
+              <Route path="rooms/:roomId/edit" element={<EditAny/>}/>
 
-            <Route path="users" element={<PrivateRoute auth={auth}><Users/></PrivateRoute>}/>
-            <Route path="users/create" element={<PrivateRoute auth={auth}><CreateUser/></PrivateRoute>}/>
-            <Route path="users/:userId" element={<PrivateRoute auth={auth}><UserDetails/></PrivateRoute>}/>
-            <Route path="users/:userId/edit" element={<PrivateRoute auth={auth}><EditAny/></PrivateRoute>}/>
+              <Route path="users" element={<Users/>}/>
+              <Route path="users/create" element={<CreateUser/>}/>
+              <Route path="users/:userId" element={<UserDetails/>}/>
+              <Route path="users/:userId/edit" element={<EditAny/>}/>
 
-            <Route path="contact" element={<PrivateRoute auth={auth}><Contact/></PrivateRoute>}/>
-            <Route path="contact/create" element={<PrivateRoute auth={auth}><CreateUser/></PrivateRoute>}/>
-            <Route path="contact/:contactId" element={<PrivateRoute auth={auth}><UserDetails/></PrivateRoute>}/>
-            <Route path="contact/:contactId/edit" element={<PrivateRoute auth={auth}><EditAny/></PrivateRoute>}/>
-          </Route>
+              <Route path="contact" element={<Contact/>}/>
+              <Route path="contact/create" element={<CreateUser/>}/>
+              <Route path="contact/:contactId" element={<UserDetails/>}/>
+              <Route path="contact/:contactId/edit" element={<EditAny/>}/>
+            </Route>
 
-          <Route path="/login" element={<Login auth={auth} setAuth={setAuth} AUTH_KEY={AUTH_KEY} />}/>
-        </Routes>
+            <Route path="/login" element={<Login/>}/>
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </>
   )
-}
-
-const PrivateRoute =({children, auth}) => {
-  if(!auth) {
-    return <Navigate to="/login"/>
-  }
-  else {
-    return children;
-  }
 }
 
 export { App }

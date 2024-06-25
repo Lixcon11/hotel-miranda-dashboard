@@ -1,4 +1,6 @@
+import { useContext } from "react"
 import styled from "styled-components"
+import { AuthContext } from "./AuthProvider"
 
 const StyledHeader = styled.header`
 width: 100%;
@@ -13,6 +15,16 @@ background-color: white;
         font-size: 28px;
         color: #262626;
         font-weight: 600;
+    }
+
+    > div {
+        display: flex;
+        gap: 15px;
+
+        img {
+            width: 60px;
+            height: 60px;
+        }
     }
 
 @media only screen and (min-width: 1000px) {
@@ -45,10 +57,18 @@ margin-left: 345px;
 
 
 const Page = ({ children, title }) => {
+    const { authState } = useContext(AuthContext);
     return(
         <>
             <StyledHeader>
                 <h1>{title}</h1>
+                <div>
+                    <div>
+                        <p>Hi {authState.name}</p>
+                        <p>{authState.email}</p>
+                    </div>
+                    <img src={authState.photo}></img>
+                </div>
             </StyledHeader>
             <Filler></Filler>
             <Space>
