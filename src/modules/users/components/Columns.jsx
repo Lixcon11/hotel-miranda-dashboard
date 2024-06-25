@@ -24,7 +24,7 @@ const Columns = [
             <p>{user.email}</p>
         </>
     )},
-    {label: "Status", display: user => user.status ? "ACTIVE" : "INACTIVE"},
+    {label: "Status", display: user => user.status ? "ACTIVE" : "INACTIVE"}
 ];
 
 export { Columns }

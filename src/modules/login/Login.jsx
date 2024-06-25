@@ -22,9 +22,9 @@ const Login = () => {
                 <h1>Login</h1>
                 <form onSubmit={submitHandler}>
                     <label htmlFor="name">Name</label>
-                    <input name="name" type="text" ></input>
+                    <input name="name" type="text" placeholder="test"></input>
                     <label htmlFor="password">Password</label>
-                    <input name="password" type="text"></input>
+                    <input name="password" type="text" placeholder="test"></input>
                     <input type="submit"></input>
                 </form>
             </>

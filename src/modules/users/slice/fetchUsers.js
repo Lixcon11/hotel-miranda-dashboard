@@ -1,16 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import userData from "../data/usersData.json"
-import { delay } from "../../../functions/delay";
+import { thunk } from "../../../functions/thunk";
 
-const fetchUsers = createAsyncThunk("users/fetchUser", async () => {
-    try {
-        const rooms = await delay(userData)
-        return rooms;
-    }
-    catch(e) {
-        console.log(e)
-        return null;
-    }
-})
+const fetchUsers = thunk("users/fetchUsers", userData, "fetch")
 
 export { fetchUsers }

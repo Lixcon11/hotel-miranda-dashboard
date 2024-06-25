@@ -8,6 +8,7 @@ import { Page } from "../../../components/Page";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../slice/fetchUsers";
 import styled from "styled-components";
+import { deleteUser } from "../slice/deleteUser";
 
 const Users = () => {
     const [loading, setLoading] = useState(true);
@@ -21,6 +22,7 @@ const Users = () => {
 
     useEffect(() => {
         if(!usersData[0]) {
+            console.log(usersData)
             dispatch(fetchUsers())
         }
     }, [])
@@ -57,6 +59,10 @@ const Users = () => {
         return [];
     }, [filter, sort, usersStatus])
 
+    const deleteHandler = id => {
+        dispatch(deleteUser(id))
+    }
+
     return (
 
         <Page title="Users">
@@ -72,7 +78,7 @@ const Users = () => {
                         <button><NavLink to="./create">+ New User</NavLink></button>
                     </div>
                 </UpperNAv>
-                <Table data={data} columns={Columns} loading={loading}/>
+                <Table data={data} columns={Columns} loading={loading} deleteHandler={deleteHandler}/>
         </Page>
     )
 }

@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
@@ -40,7 +41,7 @@ const StyledTable = styled.table`
     }
 `
 
-const Table = ({data, columns, loading}) => {
+const Table = ({data, columns, loading, deleteHandler}) => {
     return (
         <>
             {!loading ?
@@ -59,6 +60,7 @@ const Table = ({data, columns, loading}) => {
                         {columns.map((column, j) => (
                             <td key={j}><NavLink to={`./${row.id}`}>{column.display ? column.display(row) : row[column.property]}</NavLink></td>
                         ))}
+                        <td><button onClick={() =>deleteHandler(row.id)}>Delete</button></td>
                     </tr>
                     )}
                 </tbody>

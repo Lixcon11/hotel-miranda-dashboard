@@ -1,20 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
 import { fetchUsers } from "./fetchUsers";
-import { extraReducers } from "../../../functions/extraReducers";
+import { slice } from "../../../functions/slice";
+import { deleteUser } from "./deleteUser";
 
-const initialState = {
-    status: "idle",
-    data: [],
-    error: null
-}
-
-const userSlice = createSlice({
-    name: "users",
-    initialState: initialState,
-    reducers: {},
-    extraReducers: builder => {
-        extraReducers(builder, fetchUsers)
-    }
-})
+const userSlice = slice("users", fetchUsers, deleteUser)
 
 export { userSlice }
