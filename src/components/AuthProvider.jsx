@@ -1,6 +1,6 @@
-import { createContext, useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
+import { AuthContext } from "./AuthContext";
 
-const AuthContext = createContext(null);
 const AUTH_KEY = "auth"
 
 const AuthProvider = ({children}) => {
@@ -9,15 +9,14 @@ const AuthProvider = ({children}) => {
       case "logIn": 
         return {...action.payload, isLoggedIn: true};
       case "logOut":
-        return {...state, isLoggedIn: false};
+        return {isLoggedIn: false};
     }
   };
 
-  const [authState, authDispatch] = useReducer(authReducer, localStorage.getItem(AUTH_KEY) ? JSON.parse(localStorage.getItem(AUTH_KEY)) : {})
-  
+  const [authState, authDispatch] = useReducer(authReducer, localStorage.getItem(AUTH_KEY) ? JSON.parse(localStorage.getItem(AUTH_KEY)) : {isLoggedIn: false})
   
   useEffect(() => {
-    if(authState.isLoggedIn === false) {
+    if(authState.isLoggedIn === false && localStorage.getItem(AUTH_KEY)) {
       localStorage.removeItem(AUTH_KEY)
     }
   },[authState])
@@ -33,4 +32,4 @@ const AuthProvider = ({children}) => {
   )
 }
 
-export { AuthProvider, AuthContext }
+export { AuthProvider }

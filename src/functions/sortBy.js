@@ -1,6 +1,6 @@
 const sortBy = (string, data) => {
 
-    let newData = data;
+    const newData = [...data];
 
     switch(string) {
         case "date": newData.sort((a, b) => {
@@ -17,6 +17,7 @@ const sortBy = (string, data) => {
             return dateA - dateB;
         })
             break;
+            
         case "name": newData.sort((a, b) => {
             if (a.name < b.name) {
               return -1;

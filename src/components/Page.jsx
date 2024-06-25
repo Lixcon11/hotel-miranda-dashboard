@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import styled from "styled-components"
-import { AuthContext } from "./AuthProvider"
+import { AuthContext } from "./AuthContext"
 
 const StyledHeader = styled.header`
 width: 100%;
@@ -20,15 +20,21 @@ background-color: white;
     > div {
         display: flex;
         gap: 15px;
+        align-items: center;
 
         img {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
         }
     }
 
 @media only screen and (min-width: 1000px) {
 height: 120px;
+
+    img {
+        width: 60px;
+        height: 60px;
+    }
 }
 `
 const Filler = styled.div`

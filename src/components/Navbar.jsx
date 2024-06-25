@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavLink, Navigate, Outlet, useLocation } from "react-router-dom"
 import styled from "styled-components"
-import { AuthContext } from "./AuthProvider"
+import { AuthContext } from "./AuthContext"
 
 const StyledSidebar = styled.nav`
   height: 100%;

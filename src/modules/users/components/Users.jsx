@@ -1,35 +1,58 @@
 import userData from "../data/usersData.json"
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Table } from "../../../components/Table";
 import { NavLink } from "react-router-dom";
 import { sortBy } from "../../../functions/sortBy";
 import { Columns } from "./Columns";
 import { Page } from "../../../components/Page";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUsers } from "../slice/fetchUsers";
 
 const Users = () => {
+    const [loading, setLoading] = useState(true);
     const [sort, setSort] = useState ("name");
-    let newData = sortBy(sort, userData);
-    const [data, setData] = useState(newData);
     const [filter, setFilter] = useState ();
+    const dispatch = useDispatch();
+    const users = useSelector(state => state.users)
+    const usersStatus = users.status;
+    const usersData = users.data;
+    const usersError = users.error;
 
-    useEffect(() => {
-        let otherData = []
+    if(!usersData[0]) {
+        dispatch(fetchUsers())
+    }
 
-        if(filter) {
+    const data = useMemo(() => {
+        let newData = []
 
-            if(filter === "active") {
-                otherData = userData.filter(user => user.status === true)
+        if(usersStatus === "fulfilled") {
+            if(filter) {
+
+                if(filter === "active") {
+                    newData = usersData.filter(user => user.status === true)
+                }
+                else if(filter === "inactive") {
+                    newData = usersData.filter(user => user.status === false)
+                }
             }
-            else if(filter === "inactive") {
-                otherData = userData.filter(user => user.status === false)
+            else {
+                newData = usersData;
             }
+    
+            newData = sortBy(sort, newData)
+            setLoading(false);
+            return newData;
         }
-        else {
-            otherData = userData;
+        if(usersStatus === "rejected") {
+            alert(`Error: ${usersError}`)
+            setLoading(false);
+        }
+        else if(usersStatus === "pending") {
+            setLoading(true);
         }
 
-        setData(otherData);
-    }, [filter, sort])
+        return [];
+    }, [filter, sort, usersStatus])
 
     return (
 
@@ -46,7 +69,7 @@ const Users = () => {
                         <button><NavLink to="./create">+ New User</NavLink></button>
                     </div>
                 </div>
-                <Table data={data} columns={Columns}/>
+                {!loading ? <Table data={data} columns={Columns}/>: <p>Loading</p>}
         </Page>
     )
 }

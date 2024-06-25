@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { Navigate } from "react-router-dom"
 import UserData from "../users/data/usersData.json"
-import { AuthContext } from "../../components/AuthProvider"
+import { AuthContext } from "../../components/AuthContext"
 
 const Login = () => {
     const { authDispatch, authState } = useContext(AuthContext);
