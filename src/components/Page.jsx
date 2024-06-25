@@ -49,12 +49,8 @@ const Space = styled.section`
 margin-left: 120px;
 padding: 50px;
 background-color: var(--grey);
+//overflow: hidden;
 //width: 100%;
-
-    > div {
-        display: flex;
-        justify-content: space-between;
-    }
 
 @media only screen and (min-width: 1000px) {
 margin-left: 345px;

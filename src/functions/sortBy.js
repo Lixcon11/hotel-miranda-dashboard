@@ -6,14 +6,10 @@ const sortBy = (string, data) => {
         case "date": newData.sort((a, b) => {
             let dateA;
             let dateB;
-            if(a.start_date) {
-                dateA = new Date(a.start_date);
-                dateB = new Date(b.start_date);
-            }
-            else {
-                dateA = new Date(a.date);
-                dateB = new Date(b.date);
-            }
+            
+            dateA = new Date(a.date);
+            dateB = new Date(b.date);
+            
             return dateA - dateB;
         })
             break;

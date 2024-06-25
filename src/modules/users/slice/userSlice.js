@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchUsers } from "./fetchUsers";
+import { extraReducers } from "../../../functions/extraReducers";
 
 const initialState = {
     status: "idle",
@@ -12,20 +13,7 @@ const userSlice = createSlice({
     initialState: initialState,
     reducers: {},
     extraReducers: builder => {
-        builder
-        .addCase(fetchUsers.pending, (state) => {
-            state.status = "pending";
-            state.error = null;
-        })
-        .addCase(fetchUsers.fulfilled, (state, action) => {
-            state.status = "fulfilled";
-            state.error = null;
-            state.data = action.payload;
-        })
-        .addCase(fetchUsers.rejected, (state, action) => {
-            state.status = "rejected";
-            state.error = action.payload;
-        })
+        extraReducers(builder, fetchUsers)
     }
 })
 

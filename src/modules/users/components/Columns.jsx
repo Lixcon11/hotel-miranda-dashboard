@@ -7,15 +7,20 @@ const Columns = [
                 <img src={user.photo}></img>
                 <div>
                     <p>{user.name}</p>
-                    <p>{user.start_date}</p>
+                    <p>{user.date}</p>
                 </div>
             </ImageContainerTable>
         </>
     )},
-    {label: "Job Desk", property: "description"},
+    {label: "Job Desk", display: user => (
+        <>
+        <p>{user.job}</p>
+        <p>{user.description}</p>
+    </>
+    )},
     {label: "Contact", display: user => (
         <>
-            <p>{user.contact}</p>
+            <p>{user.phone}</p>
             <p>{user.email}</p>
         </>
     )},

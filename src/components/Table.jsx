@@ -40,27 +40,32 @@ const StyledTable = styled.table`
     }
 `
 
-const Table = ({data, columns}) => {
+const Table = ({data, columns, loading}) => {
     return (
-        <StyledTable>
-            <thead>
-                <tr>
-                {columns.map((column, i) => (
-                    
-                        <th key={i}>{column.label}</th>
-                ))}
-                </tr>
-            </thead>
-            <tbody>
-                {data.map((row, i) => 
-                <tr key={i}>
-                    {columns.map((column, j) => (
-                        <td key={j}><NavLink to={`./${row.id}`}>{column.display ? column.display(row) : row[column.property]}</NavLink></td>
+        <>
+            {!loading ?
+            <StyledTable>
+                <thead>
+                    <tr>
+                    {columns.map((column, i) => (
+                        
+                            <th key={i}>{column.label}</th>
                     ))}
-                </tr>
-                )}
-            </tbody>
-        </StyledTable>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map((row, i) => 
+                    <tr key={i}>
+                        {columns.map((column, j) => (
+                            <td key={j}><NavLink to={`./${row.id}`}>{column.display ? column.display(row) : row[column.property]}</NavLink></td>
+                        ))}
+                    </tr>
+                    )}
+                </tbody>
+            </StyledTable>
+            :
+            <p>Loading</p>}
+        </>
     )
 }
 

@@ -1,18 +1,26 @@
 
 import { useParams } from "react-router-dom";
 import { DeatilsOfAny } from "../../../components/DetailsOfAny";
-import userData from "../data/usersData.json"
 import { Page } from "../../../components/Page";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchUsers } from "../slice/fetchUsers";
 
 const UserDetails = () => {
     const { userId } = useParams();
-    const user = userData.filter(data => data.id == userId)[0]
+    const dispatch = useDispatch()
+    const usersData = useSelector(state => state.users).data
+    const user = usersData.filter(data => data.id == userId)[0]
+
+    useEffect(() => {
+        if(!usersData[0]) {
+            dispatch(fetchUsers())
+        }
+    }, [])
 
     return (
         <>
-            <Page>
-                <DeatilsOfAny user={user}/>
-            </Page>
+            <DeatilsOfAny data={user} type="user"/>
         </>
     )
 }

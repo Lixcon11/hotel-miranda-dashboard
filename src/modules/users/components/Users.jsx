@@ -7,6 +7,7 @@ import { Columns } from "./Columns";
 import { Page } from "../../../components/Page";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../slice/fetchUsers";
+import styled from "styled-components";
 
 const Users = () => {
     const [loading, setLoading] = useState(true);
@@ -18,9 +19,11 @@ const Users = () => {
     const usersData = users.data;
     const usersError = users.error;
 
-    if(!usersData[0]) {
-        dispatch(fetchUsers())
-    }
+    useEffect(() => {
+        if(!usersData[0]) {
+            dispatch(fetchUsers())
+        }
+    }, [])
 
     const data = useMemo(() => {
         let newData = []
@@ -57,7 +60,7 @@ const Users = () => {
     return (
 
         <Page title="Users">
-                <div>
+                <UpperNAv>
                     <div>
                         <button onClick={() => setFilter("")}>All</button>
                         <button onClick={() => setFilter("active")}>Active</button>
@@ -68,10 +71,16 @@ const Users = () => {
                         <button onClick={() => setSort("name")}>Name</button>
                         <button><NavLink to="./create">+ New User</NavLink></button>
                     </div>
-                </div>
-                {!loading ? <Table data={data} columns={Columns}/>: <p>Loading</p>}
+                </UpperNAv>
+                <Table data={data} columns={Columns} loading={loading}/>
         </Page>
     )
 }
+
+const UpperNAv = styled.div`
+display: flex;
+justify-content: space-between;
+
+`
 
 export {Users}
