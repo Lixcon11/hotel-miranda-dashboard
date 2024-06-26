@@ -1,9 +1,6 @@
-import { fetchUsers } from "./fetchUsers";
-import { slice } from "../../../functions/slice";
-import { deleteUser } from "./deleteUser";
-import { createUser } from "./createUser";
-import { updateUser } from "./updateUser";
+import { crudSlice } from "../../../functions/Features/crudSlice";
+import userData from "../data/usersData.json"
 
-const userSlice = slice("users", fetchUsers, createUser, updateUser, deleteUser)
+const [ userSlice, fetchUsers, createUser, updateUser, deleteUser ] = crudSlice(userData ,"users");
 
-export { userSlice }
+export { userSlice, fetchUsers, createUser, updateUser, deleteUser }

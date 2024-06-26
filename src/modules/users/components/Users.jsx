@@ -5,9 +5,9 @@ import { sortBy } from "../../../functions/sortBy";
 import { Columns } from "./Columns";
 import { Page } from "../../../components/Page";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../slice/fetchUsers";
+import { fetchUsers } from "../slice/userSlice";
 import styled from "styled-components";
-import { deleteUser } from "../slice/deleteUser";
+import { deleteUser } from "../slice/userSlice";
 
 const Users = () => {
     const [loading, setLoading] = useState(true);

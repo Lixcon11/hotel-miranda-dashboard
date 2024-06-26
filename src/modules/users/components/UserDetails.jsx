@@ -4,7 +4,7 @@ import { DeatilsOfAny } from "../../../components/DetailsOfAny";
 import { Page } from "../../../components/Page";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchUsers } from "../slice/fetchUsers";
+import { fetchUsers } from "../slice/userSlice";
 
 const UserDetails = () => {
     const { userId } = useParams();
