@@ -7,11 +7,11 @@ const Columns = [
                 <img src={user.photo}></img>
                 <div>
                     <p>{user.name}</p>
-                    <p>{user.date}</p>
                 </div>
             </ImageContainerTable>
         </>
-    )},
+    ), sort: "name"},
+    {label: "Joined On", property: "date", sort: "date"},
     {label: "Job Desk", display: user => (
         <>
         <p>{user.job}</p>
@@ -24,7 +24,7 @@ const Columns = [
             <p>{user.email}</p>
         </>
     )},
-    {label: "Status", display: user => user.status ? "ACTIVE" : "INACTIVE"}
+    {label: "Status", property: "status"}
 ];
 
 export { Columns }

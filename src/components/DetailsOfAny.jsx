@@ -12,13 +12,13 @@ const format = {
         {label: "Start Date: ", property: "date"},
         {label: "Job: ", property: "job"},
         {label: "Job Description: ", property: "description"},
-        {label: "Status: ", display: user => user.status ? <p>ACTIVE</p> : <p>INACTIVE</p>}
+        {label: "Status: ", property: "status"}
     ]
 }
 
 const Align = styled.div`
-    display: flex;
-    gap: 4px;
+    //display: flex;
+    //gap: 4px;
 
     img {
         height: 250px;

@@ -2,6 +2,7 @@ import { thunk } from "./thunk"
 import { createSlice } from "@reduxjs/toolkit";
 import { pendingCase } from "./pendingCase";
 import { rejectedCase } from "./rejectedCase";
+import { fullfilledResponse } from "./fullfilledResponse";
 
 const crudSlice = (data, name) => {
 
@@ -24,39 +25,35 @@ const crudSlice = (data, name) => {
         extraReducers: builder => {
             builder
             .addCase(fetchThunk.fulfilled, (state, action) => {
-                state.status = "fulfilled";
-                state.error = null;
+                fullfilledResponse(state);
                 state.data = action.payload;
             })
             .addCase(fetchThunk.pending, pendingCase())
             .addCase(fetchThunk.rejected, rejectedCase())
     
             .addCase(createThunk.fulfilled, (state, action) => {
-                state.status = "fulfilled";
-                state.error = null;
-                state.data.push(action.pyload)
+                fullfilledResponse(state);
+                state.data.push(action.payload)
             })
             .addCase(createThunk.pending, pendingCase())
             .addCase(createThunk.rejected, rejectedCase())
     
             .addCase(updateThunk.fulfilled, (state, action) => {
-                state.status = "fulfilled";
-                state.error = null;
+                fullfilledResponse(state);
                 state.data = state.data.map(r => r.id === action.payload.id ? action.payload : r)
             })
             .addCase(updateThunk.pending, pendingCase())
             .addCase(updateThunk.rejected, rejectedCase())
     
             .addCase(deleteThunk.fulfilled, (state, action) => {
-                state.status = "fulfilled";
-                state.error = null;
+                fullfilledResponse(state);
                 state.data = state.data.filter(r => r.id !== action.payload)
             })
             .addCase(deleteThunk.pending, pendingCase())
             .addCase(deleteThunk.rejected, rejectedCase())
         }
         })
-        
+
     return [slice, fetchThunk, createThunk, updateThunk, deleteThunk]
 }
 

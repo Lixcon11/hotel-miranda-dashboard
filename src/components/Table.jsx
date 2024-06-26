@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
@@ -17,6 +16,15 @@ const StyledTable = styled.table`
 
         tr {
             border-width: 0px 0px 2px 0px;
+
+            button {
+                text-align: center;
+                background: inherit;
+                border: 0;
+                padding: 0px 7px;
+                cursor: pointer;
+                color: grey;
+            }
         }
     }
 
@@ -41,7 +49,7 @@ const StyledTable = styled.table`
     }
 `
 
-const Table = ({data, columns, loading, deleteHandler}) => {
+const Table = ({data, columns, loading, deleteHandler, setSort}) => {
     return (
         <>
             {!loading ?
@@ -49,8 +57,7 @@ const Table = ({data, columns, loading, deleteHandler}) => {
                 <thead>
                     <tr>
                     {columns.map((column, i) => (
-                        
-                            <th key={i}>{column.label}</th>
+                        <th key={i}>{column.label}{column.sort ? <button onClick={()=>setSort(column.sort)}>sort</button>: null}</th>
                     ))}
                     </tr>
                 </thead>
