@@ -8,7 +8,7 @@ const initialState = {
     error: null
 }
 
-const slice = (name, fetchThunk, deleteThunk) =>(
+const slice = (name, fetchThunk, deleteThunk, createThunk) =>(
 
     createSlice({
     name: name,
@@ -30,6 +30,13 @@ const slice = (name, fetchThunk, deleteThunk) =>(
         })
         .addCase(deleteThunk.pending, pendingCase())
         .addCase(deleteThunk.rejected, rejectedCase())
+        .addCase(createThunk.fulfilled, (state, action) => {
+            state.status = "fulfilled";
+            state.error = null;
+            state.data.push(action.pyload)
+        })
+        .addCase(createThunk.pending, pendingCase())
+        .addCase(createThunk.rejected, rejectedCase())
     }
     })
 )
