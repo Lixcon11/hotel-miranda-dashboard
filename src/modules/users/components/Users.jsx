@@ -1,4 +1,3 @@
-import userData from "../data/usersData.json"
 import { useEffect, useMemo, useState } from "react";
 import { Table } from "../../../components/Table";
 import { NavLink } from "react-router-dom";
@@ -22,7 +21,6 @@ const Users = () => {
 
     useEffect(() => {
         if(!usersData[0]) {
-            console.log(usersData)
             dispatch(fetchUsers())
         }
     }, [])

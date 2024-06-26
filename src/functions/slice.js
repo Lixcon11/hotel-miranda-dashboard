@@ -8,7 +8,7 @@ const initialState = {
     error: null
 }
 
-const slice = (name, fetchThunk, deleteThunk, createThunk) =>(
+const slice = (name, fetchThunk, createThunk, updateThunk, deleteThunk, ) =>(
 
     createSlice({
     name: name,
@@ -23,13 +23,7 @@ const slice = (name, fetchThunk, deleteThunk, createThunk) =>(
         })
         .addCase(fetchThunk.pending, pendingCase())
         .addCase(fetchThunk.rejected, rejectedCase())
-        .addCase(deleteThunk.fulfilled, (state, action) => {
-            state.status = "fulfilled";
-            state.error = null;
-            state.data = state.data.filter(user => user.id !== action.payload)
-        })
-        .addCase(deleteThunk.pending, pendingCase())
-        .addCase(deleteThunk.rejected, rejectedCase())
+
         .addCase(createThunk.fulfilled, (state, action) => {
             state.status = "fulfilled";
             state.error = null;
@@ -37,6 +31,22 @@ const slice = (name, fetchThunk, deleteThunk, createThunk) =>(
         })
         .addCase(createThunk.pending, pendingCase())
         .addCase(createThunk.rejected, rejectedCase())
+
+        .addCase(updateThunk.fulfilled, (state, action) => {
+            state.status = "fulfilled";
+            state.error = null;
+            state.data = state.data.map(r => r.id === action.payload.id ? action.payload : r)
+        })
+        .addCase(updateThunk.pending, pendingCase())
+        .addCase(updateThunk.rejected, rejectedCase())
+
+        .addCase(deleteThunk.fulfilled, (state, action) => {
+            state.status = "fulfilled";
+            state.error = null;
+            state.data = state.data.filter(r => r.id !== action.payload)
+        })
+        .addCase(deleteThunk.pending, pendingCase())
+        .addCase(deleteThunk.rejected, rejectedCase())
     }
     })
 )
