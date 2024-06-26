@@ -58,12 +58,15 @@ margin-left: 345px;
 `
 
 
-const Page = ({ children, title }) => {
+const Page = ({ children, title, textHandler }) => {
     const { authState } = useContext(AuthContext);
     return(
         <>
             <StyledHeader>
                 <h1>{title}</h1>
+                <form onSubmit={textHandler}>
+                    <input type="text" name="input"></input>
+                </form>
                 <div>
                     <div>
                         <p>Hi {authState.name}</p>

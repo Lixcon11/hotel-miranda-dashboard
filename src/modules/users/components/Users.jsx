@@ -9,7 +9,7 @@ const Users = () => {
     const pageData = {
         title: "Users",
         columns: Columns,
-        dataParams: {data:"users", sortDeafult: ""},
+        dataParams: {slice:"users", sortDeafult: "", filterDefault: undefined, searchFilter: "name"},
         filterList: filterList.user,
         toFetch: fetchUsers,
         toDelete: deleteUser

@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 const TablePage = ({ pageData }) => {
     const {title, columns, dataParams, filterList, toFetch, toDelete } = pageData;
-    const { data, loading, setSort, setFilter } = useDataProvider(dataParams.data, dataParams.sortDeafult)
+    const { data, loading, setSort, setFilter } = useDataProvider(dataParams)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -20,12 +20,18 @@ const TablePage = ({ pageData }) => {
         dispatch(toDelete(id))
     }
 
+    const textHandler = e => {
+        e.preventDefault()
+        const { value } = e.target.input;
+        setFilter(filterParams => ({...filterParams, word: value}))
+    }
+
     return (
         <>
-            <Page title={title}>
+            <Page title={title} textHandler={textHandler}>
                     <UpperNav>
                         <div>
-                            {filterList.map((filter, i) => <button key={i} onClick={() => setFilter(filter.toFilter)}>{filter.label}</button>)}
+                            {filterList.map((filter, i) => <button key={i} onClick={() => setFilter(filterParams => ({...filterParams, type: filter.toFilter}))}>{filter.label}</button>)}
                         </div>
                         <div>
                             <button><NavLink to="./create">Add {title.slice(0, -1)}</NavLink></button>

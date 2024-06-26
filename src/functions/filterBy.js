@@ -1,10 +1,14 @@
 const filterBy = (filter, data) => {
-    if(filter){
-        return data.filter(r => r.status === filter)
+    let newData = [...data]
+    
+    if(filter.word) {
+        newData = newData.filter(r => r[filter.searchOn].includes(filter.word))
     }
-    else {
-        return data;
+    if(filter.type) {
+        newData = newData.filter(r => r.status === filter.type)
     }
+
+    return newData;
 }
 
 export { filterBy }
