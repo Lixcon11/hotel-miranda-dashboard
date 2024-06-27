@@ -14,6 +14,7 @@ import { AuthProvider } from "./components/AuthProvider"
 import { PrivateRoute } from "./components/PrivateRoute"
 import { store } from "./store"
 import { Provider } from "react-redux"
+import { EditUser } from "./modules/users/components/EditUser"
 
 const App = () => {
   return (
@@ -26,23 +27,23 @@ const App = () => {
                 <Route path="dashboard" element={<Dashboard/>}/>
                 <Route path="bookings" element={<Bookings/>}/>
                 <Route path="bookings/create" element={<CreateBooking/>}/>
-                <Route path="bookings/:bookingId" element={<UserDetails/>}/>
-                <Route path="bookings/:bookingId/edit" element={<EditAny/>}/>
+                <Route path="bookings/:id" element={<UserDetails/>}/>
+                <Route path="bookings/:id/edit" element={<EditAny/>}/>
 
                 <Route path="rooms" element={<Rooms/>}/>
                 <Route path="rooms/create" element={<CreateUser/>}/>
-                <Route path="rooms/:roomId" element={<UserDetails/>}/>
-                <Route path="rooms/:roomId/edit" element={<EditAny/>}/>
+                <Route path="rooms/:id" element={<UserDetails/>}/>
+                <Route path="rooms/:id/edit" element={<EditAny/>}/>
 
                 <Route path="users" element={<Users/>}/>
                 <Route path="users/create" element={<CreateUser/>}/>
-                <Route path="users/:userId" element={<UserDetails/>}/>
-                <Route path="users/:userId/edit" element={<EditAny/>}/>
+                <Route path="users/:id" element={<UserDetails/>}/>
+                <Route path="users/:id/edit" element={<EditUser/>}/>
 
                 <Route path="contact" element={<Contact/>}/>
                 <Route path="contact/create" element={<CreateUser/>}/>
-                <Route path="contact/:contactId" element={<UserDetails/>}/>
-                <Route path="contact/:contactId/edit" element={<EditAny/>}/>
+                <Route path="contact/:id" element={<UserDetails/>}/>
+                <Route path="contact/:id/edit" element={<EditAny/>}/>
               </Route>
 
               <Route path="/login" element={<Login/>}/>

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { NavLink, Navigate, useNavigate } from "react-router-dom"
+import { NavLink, Navigate, useNavigate, useParams } from "react-router-dom"
 import styled from "styled-components"
 import { Page } from "./Page"
 import { Back } from "./Back"
@@ -27,9 +27,10 @@ const Align = styled.div`
     }
 `
 
-const DeatilsOfAny = ({ format, pageData, id}) => {
+const DeatilsOfAny = ({ format, pageData}) => {
+    const { id } = useParams();
     const {title, crud, data, loading } = pageData();
-    const obj = data.filter(obj => obj.id == id)[0]
+    const obj = data.filter(obj => obj.id !== id)[0]
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
