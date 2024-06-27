@@ -1,10 +1,10 @@
 import { useMemo, useState } from "react";
 import { filterBy } from "../functions/filterBy";
 import { sortBy } from "../functions/sortBy";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
-const useDataProvider = (dataParams) => {
+const useDataProvider = (dataParams, toFetch) => {
     const {slice ,sortDeafult, filterDefault, searchFilter} = dataParams;
     const [loading, setLoading] = useState(true);
     const [sort, setSort] = useState (sortDeafult);
@@ -13,6 +13,7 @@ const useDataProvider = (dataParams) => {
     const objStatus = obj.status;
     const objData = obj.data;
     const objError = obj.error;
+    const dispatch = useDispatch();
     
     const data = useMemo(() => {
         let newData = []
@@ -29,6 +30,9 @@ const useDataProvider = (dataParams) => {
         }
         else if(objStatus === "pending") {
             setLoading(true);
+        }
+        else if(objStatus === "idle") {
+            dispatch(toFetch())
         }
 
         return [];

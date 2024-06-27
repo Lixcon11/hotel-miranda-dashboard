@@ -4,20 +4,15 @@ import { UpperNav } from "./UpperNav";
 import { NavLink } from "react-router-dom";
 import useDataProvider from "../hooks/useDataProvider";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
 
 
 const TablePage = ({ pageData }) => {
-    const {title, columns, dataParams, filterList, toFetch, toDelete } = pageData;
-    const { data, loading, setSort, setFilter } = useDataProvider(dataParams)
+    const {title, columns, dataParams, filterList, crud } = pageData;
+    const { data, loading, setSort, setFilter } = useDataProvider(dataParams, crud.toFetch)
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(toFetch())
-    }, [])
-
     const deleteHandler = id => {
-        dispatch(toDelete(id))
+        dispatch(crud.toDelete(id))
     }
 
     const textHandler = e => {
