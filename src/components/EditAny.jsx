@@ -3,6 +3,7 @@ import { Page } from "./Page";
 import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
+import { Back } from "./Back";
 
 const EditAny = ({ pageData }) => {
     const { title, crud, data, loading } = pageData();
@@ -34,22 +35,24 @@ const EditAny = ({ pageData }) => {
         nameList.map(name => newObj[name] = e.target[name].value)
         dispatch(crud.toUpdate(newObj))
         navigate(-1)
-        //console.log(nameList)
     };
 
     return (
         <>
-            <Page>
+            <Page title={`Edit ${title.slice(0, -1)}`}>
                 {!loading && variable ? 
-                <StyledForm onSubmit={submitHandler}>
-                    {nameList.map((name, i) => (
-                        <div key={i}>
-                            <label>{name}</label>
-                            <input name={name} type="text" value={variable[name]} onChange={(e)=> setVariable(variables => ({...variables, [name]: e.target.value}))} ></input>
-                        </div>
-                    ))}
-                    <button type="submit">Edit</button>
-                </StyledForm>
+                <>
+                    <StyledForm onSubmit={submitHandler}>
+                        {nameList.map((name, i) => (
+                            <div key={i}>
+                                <label>{name + ": "}</label>
+                                <input name={name} type="text" value={variable[name]} onChange={(e)=> setVariable(variables => ({...variables, [name]: e.target.value}))} ></input>
+                            </div>
+                        ))}
+                        <button type="submit">Edit</button>
+                        <Back/>
+                    </StyledForm>
+                </>
                 :
                 <p>Loading</p>}
             </Page>

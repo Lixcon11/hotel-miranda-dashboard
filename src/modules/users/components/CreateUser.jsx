@@ -1,10 +1,6 @@
 import { CreateAny } from "../../../components/CreateAny"
+import { userPageData } from "../functions/userPageData"
 
-const CreateUser = () => {
-    return (
-        <>
-            <CreateAny></CreateAny>
-        </>
-)}
+const CreateUser = () => <CreateAny pageData={userPageData}></CreateAny>
 
 export { CreateUser }

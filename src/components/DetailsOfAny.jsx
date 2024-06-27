@@ -1,21 +1,9 @@
 /* eslint-disable react/prop-types */
-import { NavLink, Navigate, useNavigate, useParams } from "react-router-dom"
+import { NavLink, useNavigate, useParams } from "react-router-dom"
 import styled from "styled-components"
 import { Page } from "./Page"
 import { Back } from "./Back"
 import { useDispatch } from "react-redux"
-import { useState } from "react"
-
-const DetailsFormat = [
-        {display: user => <img src={user.photo}/>},
-        {label: "Name: ", property: "name"},
-        {label: "Email: ", property: "email"},
-        {label: "Phone: ", property: "phone"},
-        {label: "Start Date: ", property: "date"},
-        {label: "Job: ", property: "job"},
-        {label: "Job Description: ", property: "description"},
-        {label: "Status: ", property: "status"}
-]
 
 const Align = styled.div`
     //display: flex;
@@ -27,9 +15,9 @@ const Align = styled.div`
     }
 `
 
-const DeatilsOfAny = ({ format, pageData}) => {
+const DetailsOfAny = ({ pageData}) => {
     const { id } = useParams();
-    const {title, crud, data, loading } = pageData();
+    const {title, crud, data, loading, detailsFormat } = pageData();
     const obj = data.filter(obj => obj.id !== id)[0]
     const dispatch = useDispatch()
     const navigate = useNavigate();
@@ -44,10 +32,10 @@ const DeatilsOfAny = ({ format, pageData}) => {
             <Page title={`Details of ${title.slice(0, -1)}`}>
                 {!loading && obj ?
                 <>
-                    {format.map((field, i) => field.display ? <Align key={i}><p>{field.label}</p>{field.display(obj)}</Align> : <p key={i}>{field.label + obj[field.property]}</p>)}
+                    {detailsFormat.map((field, i) => field.display ? <Align key={i}><p>{field.label}</p>{field.display(obj)}</Align> : <p key={i}>{field.label + obj[field.property]}</p>)}
                     <button><NavLink to="./edit">Edit</NavLink></button>
                     <button onClick={deleteHandler}>Delete</button>
-                    <Back></Back>
+                    <Back/>
                 </>
                 :
                 <p>Loading</p>}
@@ -56,4 +44,4 @@ const DeatilsOfAny = ({ format, pageData}) => {
     )
 }
 
-export {DeatilsOfAny}
+export { DetailsOfAny }

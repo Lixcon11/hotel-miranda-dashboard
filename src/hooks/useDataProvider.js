@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 const useDataProvider = (dataParams, toFetch) => {
-    const {slice ,sortDeafult, filterDefault, searchFilter} = dataParams;
+    const {slice ,sortDefault, filterDefault, searchFilter} = dataParams;
     const [loading, setLoading] = useState(true);
-    const [sort, setSort] = useState (sortDeafult);
+    const [sort, setSort] = useState (sortDefault);
     const [filter, setFilter] = useState ({type: filterDefault, word: "", searchOn: searchFilter});
     const obj = useSelector(state => state[slice])
     const objStatus = obj.status;
