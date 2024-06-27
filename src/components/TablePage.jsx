@@ -2,13 +2,11 @@ import { Table } from "./Table";
 import { Page } from "./Page";
 import { UpperNav } from "./UpperNav";
 import { NavLink } from "react-router-dom";
-import useDataProvider from "../hooks/useDataProvider";
 import { useDispatch } from "react-redux";
 
 
 const TablePage = ({ pageData }) => {
-    const {title, columns, dataParams, filterList, crud } = pageData;
-    const { data, loading, setSort, setFilter } = useDataProvider(dataParams, crud.toFetch)
+    const {title, columns, filterList, crud, data, loading, setSort, setFilter } = pageData();
     const dispatch = useDispatch();
 
     const deleteHandler = id => {
