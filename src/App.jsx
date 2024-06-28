@@ -15,6 +15,7 @@ import { Provider } from "react-redux"
 import { userPageData } from "./modules/users/functions/userPageData"
 import { TablePage } from "./components/TablePage"
 import { DetailsOfAny } from "./components/DetailsOfAny"
+import { CreateAny } from "./components/CreateAny"
 
 const userData = userPageData;
 
@@ -38,7 +39,7 @@ const App = () => {
                 <Route path="rooms/:id/edit" element={<EditAny/>}/>
 
                 <Route path="users" element={<TablePage pageData={userData}/>}/>
-                <Route path="users/create" element={<CreateUser/>}/>
+                <Route path="users/create" element={<CreateAny pageData={userData}/>}/>
                 <Route path="users/:id" element={<DetailsOfAny pageData={userData}/>}/>
                 <Route path="users/:id/edit" element={<EditAny pageData={userData}/>}/>
 
