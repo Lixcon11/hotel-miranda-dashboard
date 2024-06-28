@@ -1,16 +1,16 @@
 import { useContext } from "react"
 import { Navigate } from "react-router-dom"
-import UserData from "../users/data/usersData.json"
 import { AuthContext } from "../../components/AuthContext"
+import { userPageData } from "../users/functions/userPageData"
 
 const Login = () => {
     const { authDispatch, authState } = useContext(AuthContext);
-    
+    const { data } = userPageData();
     const submitHandler = e => {
         e.preventDefault();
         const name = e.target.name.value;
         const password = e.target.password.value;
-        const user = UserData.filter(user => user.name === name && user.password === password)[0];
+        const user = data.filter(user => user.name === name && user.password === password)[0];
         if(user) {
             authDispatch({type: "logIn", payload: {name: user.name, photo: user.photo, email: user.email}})
         }
