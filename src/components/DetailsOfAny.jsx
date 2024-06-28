@@ -18,7 +18,8 @@ const Align = styled.div`
 const DetailsOfAny = ({ pageData}) => {
     const { id } = useParams();
     const {title, crud, data, loading, detailsFormat } = pageData();
-    const obj = data.filter(obj => obj.id !== id)[0]
+    const obj = data.filter(obj => obj.id == id)[0]
+    console.log(data)
     const dispatch = useDispatch()
     const navigate = useNavigate();
 

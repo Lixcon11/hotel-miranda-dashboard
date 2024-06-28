@@ -8,7 +8,7 @@ import { Back } from "./Back";
 const EditAny = ({ pageData }) => {
     const { title, crud, data, loading } = pageData();
     const { id } = useParams();
-    const obj = data.filter(obj => obj.id !== id)[0];
+    const obj = data.filter(obj => obj.id == id)[0];
     const [variable, setVariable] = useState();
     const navigate = useNavigate();
     const dispatch = useDispatch();
