@@ -29,7 +29,6 @@ const StyledSidebar = styled.nav`
 `
 
 const Navbar = () => {
-
     const { authDispatch } = useContext(AuthContext);
 
     const buttonHandler = () => {
@@ -39,6 +38,7 @@ const Navbar = () => {
     if(useLocation().pathname === "/") {
         return <Navigate to="/dashboard"/>
     }
+    
     return (
         <>
             <StyledSidebar>

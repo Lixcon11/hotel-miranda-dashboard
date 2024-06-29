@@ -1,5 +1,12 @@
+import styled from "styled-components";
 import { createFormat } from "../../../functions/createFormats";
 import { ImageContainerTable } from "../../../styles/ImageContainerTable";
+
+const MediumImg = styled.img`
+    height: 250px;
+    width: 250px;
+    
+`
 
 const formats = createFormat(
     [
@@ -29,7 +36,7 @@ const formats = createFormat(
         {label: "Status", property: "status"}
     ],
     [
-        {display: user => <img src={user.photo}/>},
+        {display: (user, i) => <MediumImg key={i} src={user.photo}/>},
         {label: "Name: ", property: "name"},
         {label: "Email: ", property: "email"},
         {label: "Phone: ", property: "phone"},

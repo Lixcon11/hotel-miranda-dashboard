@@ -1,6 +1,6 @@
 import { Table } from "./Table";
 import { Page } from "./Page";
-import { UpperNav } from "./UpperNav";
+import { UpperNav } from "../styles/UpperNav";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 

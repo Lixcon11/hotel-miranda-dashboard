@@ -38,29 +38,22 @@ height: 120px;
     }
 }
 `
-const Filler = styled.div`
-width: 100%;
-height: 50px;
-
-@media only screen and (min-width: 1000px) {
-height: 120px;
-}
-`
 const Space = styled.section`
 margin-left: 120px;
-padding: 50px;
+padding: 100px 50px 50px;
 background-color: var(--grey);
 //overflow: hidden;
 //width: 100%;
 
 @media only screen and (min-width: 1000px) {
+padding-top: 170px;
 margin-left: 345px;
 }
 `
 
-
 const Page = ({ children, title, textHandler }) => {
     const { authState } = useContext(AuthContext);
+    
     return(
         <>
             <StyledHeader>
@@ -76,7 +69,6 @@ const Page = ({ children, title, textHandler }) => {
                     <img src={authState.photo}></img>
                 </div>
             </StyledHeader>
-            <Filler></Filler>
             <Space>
                 {children}
             </Space>

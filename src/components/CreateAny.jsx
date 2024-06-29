@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { Page } from "./Page";
-import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { Back } from "./Back";
 
@@ -25,7 +24,7 @@ const CreateAny = ({ pageData }) => {
             <Page title={`Add ${title.slice(0, -1)}`}>
                 {!loading ? 
                 <>
-                    <StyledForm onSubmit={submitHandler}>
+                    <form onSubmit={submitHandler}>
                         {createFormat.map((row, i) => (
                             <div key={i}>
                                 <label>{row.label + ": "}</label>
@@ -34,7 +33,7 @@ const CreateAny = ({ pageData }) => {
                         ))}
                         <button type="submit">Add</button>
                         <Back/>
-                    </StyledForm>
+                    </form>
                 </>
                 :
                 <p>Loading</p>}
@@ -42,12 +41,5 @@ const CreateAny = ({ pageData }) => {
         </>
     )
 }
-
-const StyledForm = styled.form`
-
-    label {
-        text-transform: capitalize;
-    }
-`
 
 export { CreateAny }
