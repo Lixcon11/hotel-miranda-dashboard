@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { Back } from "./Back";
+import { useContext } from "react";
+import { AuthContext } from "./AuthContext";
 
 const EditAny = ({ pageData }) => {
     const { title, crud, data, loading } = pageData();
@@ -12,6 +14,7 @@ const EditAny = ({ pageData }) => {
     const [variable, setVariable] = useState();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { authDispatch, authState } = useContext(AuthContext);
     
     useEffect(()=> {
         if(!loading){
@@ -34,6 +37,13 @@ const EditAny = ({ pageData }) => {
         const newObj = {...obj}
         nameList.map(name => newObj[name] = e.target[name].value)
         dispatch(crud.toUpdate(newObj))
+        
+        if(title === "users") {
+            if(authState.id === obj.id) {
+                authDispatch({type: "updateUser", payload: {name: newObj.name, photo: newObj.photo, email: newObj.email}})
+                console.log(authState)
+            }
+        }
         navigate(-1)
     };
 

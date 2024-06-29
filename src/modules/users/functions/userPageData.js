@@ -1,27 +1,7 @@
-
-import { createUser, fetchUsers, updateUser } from "../features/userSlice";
-import { deleteUser } from "../features/userSlice";
-import { filterList } from "../../../functions/filterList";
+import { crud } from "../features/userSlice";
 import { PageData } from "../../../components/PageData";
-import { Columns } from "../components/Columns";
-import { DetailsFormat } from "../components/DetailsFormat";
-import { CreateFormat } from "../components/CreateFormat";
+import { formats } from "../components/Formats";
 
-const userPageData = () => (
-    PageData(
-    "Users", 
-    Columns, 
-    "users", 
-    "name", 
-    undefined, 
-    "name", 
-    filterList.user,
-    DetailsFormat,
-    CreateFormat, 
-    fetchUsers,
-    createUser,
-    updateUser,
-    deleteUser
-))
+const userPageData = () => PageData("users", "name", "name", formats, crud)
 
 export { userPageData }

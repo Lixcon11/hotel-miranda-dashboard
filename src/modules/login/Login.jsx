@@ -12,7 +12,7 @@ const Login = () => {
         const password = e.target.password.value;
         const user = data.filter(user => user.name === name && user.password === password)[0];
         if(user) {
-            authDispatch({type: "logIn", payload: {name: user.name, photo: user.photo, email: user.email}})
+            authDispatch({type: "logIn", payload: {name: user.name, photo: user.photo, email: user.email, id: user.id}})
         }
     }
 

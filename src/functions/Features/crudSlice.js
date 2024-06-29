@@ -33,7 +33,17 @@ const crudSlice = (data, name) => {
     
             .addCase(createThunk.fulfilled, (state, action) => {
                 fullfilledResponse(state);
-                state.data.push(action.payload)
+                const idList = state.data.map(obj => obj.id).sort((a, b) => a - b);
+                let newId = 1;
+                for (let id of idList) {
+                    if(id === newId) {
+                        newId++;
+                    } 
+                    else {
+                        break;
+                    }
+                }
+                state.data.push({id: newId, ...action.payload})
             })
             .addCase(createThunk.pending, pendingCase())
             .addCase(createThunk.rejected, rejectedCase())
@@ -54,7 +64,7 @@ const crudSlice = (data, name) => {
         }
         })
 
-    return [slice, fetchThunk, createThunk, updateThunk, deleteThunk]
+    return [slice, {toFetch:fetchThunk, toCreate: createThunk, toUpdate: updateThunk, toDelete: deleteThunk}]
 }
 
 export { crudSlice };

@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 
 
 const TablePage = ({ pageData }) => {
-    const {title, columns, filterList, crud, data, loading, setSort, setFilter } = pageData();
+    const { title, columns, filtersList, crud, data, loading, setSort, setFilter } = pageData();
     const dispatch = useDispatch();
 
     const deleteHandler = id => {
@@ -24,7 +24,7 @@ const TablePage = ({ pageData }) => {
             <Page title={title} textHandler={textHandler}>
                     <UpperNav>
                         <div>
-                            {filterList.map((filter, i) => <button key={i} onClick={() => setFilter(filterParams => ({...filterParams, type: filter.toFilter}))}>{filter.label}</button>)}
+                            {filtersList.map((filter, i) => <button key={i} onClick={() => setFilter(filterParams => ({...filterParams, type: filter.toFilter}))}>{filter.label}</button>)}
                         </div>
                         <div>
                             <button><NavLink to="./create">Add {title.slice(0, -1)}</NavLink></button>

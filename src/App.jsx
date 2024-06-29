@@ -5,7 +5,6 @@ import { Rooms } from "./modules/rooms/components/Rooms"
 import { Contact } from "./modules/contact/components/Contact"
 import { Login } from "./modules/login/Login"
 import { EditAny } from "./components/EditAny"
-import { CreateUser } from "./modules/users/components/CreateUser"
 import { CreateBooking } from "./modules/bookings/components/CreateBooking"
 import { Navbar } from "./components/Navbar"
 import { AuthProvider } from "./components/AuthProvider"
@@ -34,7 +33,7 @@ const App = () => {
                 <Route path="bookings/:id/edit" element={<EditAny/>}/>
 
                 <Route path="rooms" element={<Rooms/>}/>
-                <Route path="rooms/create" element={<CreateUser/>}/>
+                <Route path="rooms/create" element={<CreateAny/>}/>
                 <Route path="rooms/:id" element={<DetailsOfAny/>}/>
                 <Route path="rooms/:id/edit" element={<EditAny/>}/>
 
@@ -44,7 +43,7 @@ const App = () => {
                 <Route path="users/:id/edit" element={<EditAny pageData={userData}/>}/>
 
                 <Route path="contact" element={<Contact/>}/>
-                <Route path="contact/create" element={<CreateUser/>}/>
+                <Route path="contact/create" element={<CreateAny/>}/>
                 <Route path="contact/:id" element={<DetailsOfAny/>}/>
                 <Route path="contact/:id/edit" element={<EditAny/>}/>
               </Route>

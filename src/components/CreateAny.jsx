@@ -1,12 +1,11 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Page } from "./Page";
-import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { Back } from "./Back";
 
 const CreateAny = ({ pageData }) => {
-    const { title, crud, data, loading, createFormat } = pageData();
+    const { title, crud, loading, createFormat } = pageData();
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -17,17 +16,7 @@ const CreateAny = ({ pageData }) => {
         createFormat.map(r => {
             newObj[r.property] = e.target[r.property].value
         })
-        const idList = data.map(obj => obj.id).sort((a, b) => a - b);
-        let newId = 1;
-        for (let id of idList) {
-            if(id === newId) {
-                newId++;
-            } 
-            else {
-                break;
-            }
-        }
-       dispatch(crud.toCreate({id: newId, ...newObj}))
+        dispatch(crud.toCreate({...newObj}))
         navigate(-1)
     };
 

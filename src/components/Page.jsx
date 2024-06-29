@@ -15,6 +15,7 @@ background-color: white;
         font-size: 28px;
         color: #262626;
         font-weight: 600;
+        text-transform: capitalize;
     }
 
     > div {
