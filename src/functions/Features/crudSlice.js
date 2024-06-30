@@ -50,7 +50,7 @@ const crudSlice = (data, name) => {
     
             .addCase(updateThunk.fulfilled, (state, action) => {
                 fullfilledResponse(state);
-                state.data = state.data.map(r => r.id === action.payload.id ? action.payload : r)
+                state.data = state.data.map(r => r.id === action.payload.id ? {...r, ...action.payload} : r)
             })
             .addCase(updateThunk.pending, pendingCase())
             .addCase(updateThunk.rejected, rejectedCase())

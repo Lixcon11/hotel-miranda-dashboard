@@ -21,7 +21,7 @@ const DetailsOfAny = ({ pageData}) => {
             <Page title={`${title.slice(0, -1)} Details`}>
                 {!loading && obj ?
                 <>
-                    {detailsFormat.map((field, i) => field.display ? field.display(obj, i) : <p key={i}>{field.label + obj[field.property]}</p>)}
+                    {detailsFormat.map((field, i) => field.display ? field.display(obj, i) : <p key={i}>{field.label + ": " + obj[field.property]}</p>)}
                     <button><NavLink to="./edit">Edit</NavLink></button>
                     <button onClick={deleteHandler}>Delete</button>
                     <Back/>

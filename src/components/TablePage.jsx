@@ -21,6 +21,10 @@ const TablePage = ({ pageData }) => {
     const deleteHandler = id => {
         dispatch(crud.toDelete(id))
     }
+
+    const editHandler = obj => {
+        dispatch(crud.toUpdate(obj))
+    }
     
     const textHandler = e => {
         e.preventDefault()
@@ -51,9 +55,14 @@ const TablePage = ({ pageData }) => {
                     <tbody>
                         {data.map((row, i) => 
                             <tr key={i}>
-                                {columns.map((column, j) => (
-                                    <td key={j}><NavLink to={`./${row.id}`}>{column.display ? column.display(row) : row[column.property]}</NavLink></td>
-                                ))}
+                                {columns.map((column, j) => {
+                                    if(column.button) {
+                                        return <td key={j}>{column.display ? column.display(row, editHandler) : row[column.property]}</td>
+                                    }
+                                    else {
+                                        return <td key={j}><NavLink to={`./${row.id}`}>{column.display ? column.display(row, editHandler) : row[column.property]}</NavLink></td>
+                                    }
+                                })}
                                 <td><button onClick={() =>deleteHandler(row.id)}>Delete</button></td>
                             </tr>
                         )}
