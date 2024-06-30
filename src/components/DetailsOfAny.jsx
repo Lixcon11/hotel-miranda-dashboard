@@ -3,6 +3,7 @@ import { NavLink, useNavigate, useParams } from "react-router-dom"
 import { Page } from "./Page"
 import { Back } from "./Back"
 import { useDispatch } from "react-redux"
+import styled from "styled-components"
 
 const DetailsOfAny = ({ pageData}) => {
     const { id } = useParams();
@@ -10,7 +11,7 @@ const DetailsOfAny = ({ pageData}) => {
     const obj = data.filter(obj => obj.id == id)[0];
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+
     const deleteHandler = () => {
         dispatch(crud.toDelete(obj.id))
         navigate(-1)
@@ -21,7 +22,7 @@ const DetailsOfAny = ({ pageData}) => {
             <Page title={`${title.slice(0, -1)} Details`}>
                 {!loading && obj ?
                 <>
-                    {detailsFormat.map((field, i) => field.display ? field.display(obj, i) : <p key={i}>{field.label + ": " + obj[field.property]}</p>)}
+                    {detailsFormat.map((field, i) => field.display ? <Center>{field.label ? <p>{field.label + ":"}&nbsp;</p>: null}{field.display(obj, i)}</Center> : <p key={i}>{field.label + ": " + obj[field.property]}</p>)}
                     <button><NavLink to="./edit">Edit</NavLink></button>
                     <button onClick={deleteHandler}>Delete</button>
                     <Back/>
@@ -32,5 +33,11 @@ const DetailsOfAny = ({ pageData}) => {
         </>
     )
 }
+
+const Center = styled.div`
+    p {
+    display: inline-block;
+    }
+`
 
 export { DetailsOfAny }

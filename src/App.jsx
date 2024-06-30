@@ -12,9 +12,11 @@ import { TablePage } from "./components/TablePage"
 import { DetailsOfAny } from "./components/DetailsOfAny"
 import { CreateAny } from "./components/CreateAny"
 import { contactsPageData } from "./modules/contacts/functions/contactsPageData"
+import { roomsPageData } from "./modules/rooms/functions/roomsPageData"
 
 const usersData = usersPageData;
 const contactsData = contactsPageData;
+const roomsData = roomsPageData;
 
 const App = () => {
   return (
@@ -31,10 +33,10 @@ const App = () => {
                 <Route path="bookings/:id" element={<DetailsOfAny/>}/>
                 <Route path="bookings/:id/edit" element={<EditAny/>}/>
 
-                <Route path="rooms" element={<TablePage/>}/>
-                <Route path="rooms/create" element={<CreateAny/>}/>
-                <Route path="rooms/:id" element={<DetailsOfAny/>}/>
-                <Route path="rooms/:id/edit" element={<EditAny/>}/>
+                <Route path="rooms" element={<TablePage pageData={roomsData}/>}/>
+                <Route path="rooms/create" element={<CreateAny pageData={roomsData}/>}/>
+                <Route path="rooms/:id" element={<DetailsOfAny pageData={roomsData}/>}/>
+                <Route path="rooms/:id/edit" element={<EditAny pageData={roomsData}/>}/>
 
                 <Route path="users" element={<TablePage pageData={usersData}/>}/>
                 <Route path="users/create" element={<CreateAny pageData={usersData}/>}/>

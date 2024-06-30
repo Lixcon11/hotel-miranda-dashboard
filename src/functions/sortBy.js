@@ -14,11 +14,12 @@ const sortBy = (string, data) => {
         })
             break;
             
+        case "price":
         case "name": newData.sort((a, b) => {
-            if (a.name < b.name) {
+            if (a[string] < b[string]) {
               return -1;
             }
-            if (a.name > b.name) {
+            if (a[string] > b[string]) {
               return 1;
             }
             return 0;

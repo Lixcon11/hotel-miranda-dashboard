@@ -1,12 +1,6 @@
-import styled from "styled-components";
 import { createFormat } from "../../../functions/createFormats";
 import { ImageContainerTable } from "../../../styles/ImageContainerTable";
-
-const MediumImg = styled.img`
-    height: 250px;
-    width: 250px;
-    
-`
+import { MediumImg } from "../../../styles/MediumImg";
 
 const formats = createFormat(
     [
