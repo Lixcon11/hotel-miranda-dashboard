@@ -46,7 +46,7 @@ const Navbar = () => {
                 <NavLink to="/bookings">Bookings</NavLink><br/>
                 <NavLink to="/rooms">Rooms</NavLink><br/>
                 <NavLink to="/users">Users</NavLink><br/>
-                <NavLink to="/contact">Contact</NavLink><br/>
+                <NavLink to="/contacts">Contacts</NavLink><br/>
                 <button onClick={buttonHandler}>Logout</button>
             </StyledSidebar>
             <Outlet></Outlet>

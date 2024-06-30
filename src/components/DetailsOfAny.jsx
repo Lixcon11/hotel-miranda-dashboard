@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux"
 
 const DetailsOfAny = ({ pageData}) => {
     const { id } = useParams();
-    const {title, crud, data, loading, detailsFormat } = pageData();
+    const {title, crud, data, loading, detailsFormat } = pageData().generalData();
     const obj = data.filter(obj => obj.id == id)[0];
     const dispatch = useDispatch();
     const navigate = useNavigate();

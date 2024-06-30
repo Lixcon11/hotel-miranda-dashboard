@@ -1,11 +1,11 @@
 import { useContext } from "react"
 import { Navigate } from "react-router-dom"
 import { AuthContext } from "../../components/AuthContext"
-import { userPageData } from "../users/functions/userPageData"
+import { usersPageData } from "../users/functions/usersPageData"
 
 const Login = () => {
     const { authDispatch, authState } = useContext(AuthContext);
-    const { data } = userPageData();
+    const { data } = usersPageData();
     const submitHandler = e => {
         e.preventDefault();
         const name = e.target.name.value;

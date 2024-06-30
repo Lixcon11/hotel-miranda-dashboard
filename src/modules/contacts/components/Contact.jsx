@@ -1,5 +1,4 @@
 import { useState } from "react";
-import contactData from "../data/contactData.json"
 import { Table } from "../../../components/Table";
 import { sortBy } from "../../../functions/sortBy";
 import { Columns } from "./Columns";

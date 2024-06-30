@@ -59,7 +59,7 @@ const formats = createFormat(
     [
         {label: "All", toFilter: ""},
         {label: "Active", toFilter: "ACTIVE"},
-        {label: "Inactive", toFilter: "INACTIVE"},
+        {label: "Inactive", toFilter: "INACTIVE"}
     ]
 )
 

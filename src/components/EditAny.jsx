@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
 
 const EditAny = ({ pageData }) => {
-    const { title, crud, data, loading } = pageData();
+    const { title, crud, data, loading } = pageData().generalData();
     const { id } = useParams();
     const obj = data.filter(obj => obj.id == id)[0];
     const [variable, setVariable] = useState();

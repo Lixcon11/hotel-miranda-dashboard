@@ -1,5 +1,6 @@
 const createFormat = (columns, detailsFormat, createFormat, filtersList) => (
-    {columns: columns, 
+    {
+    columns: columns, 
     detailsFormat: detailsFormat,
     createFormat: createFormat,
     filtersList: filtersList

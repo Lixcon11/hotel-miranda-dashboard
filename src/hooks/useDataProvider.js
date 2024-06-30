@@ -1,15 +1,12 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { filterBy } from "../functions/filterBy";
 import { sortBy } from "../functions/sortBy";
 import { useDispatch, useSelector } from "react-redux";
 
 
-const useDataProvider = (dataParams, toFetch) => {
-    const {sliceName ,sortDefault, searchFilter} = dataParams;
+const useDataProvider = (name, toFetch, sort, filter) => {
     const [loading, setLoading] = useState(true);
-    const [sort, setSort] = useState (sortDefault);
-    const [filter, setFilter] = useState ({type: "", word: "", searchOn: searchFilter});
-    const obj = useSelector(state => state[sliceName])
+    const obj = useSelector(state => state[name])
     const objStatus = obj.status;
     const objData = obj.data;
     const objError = obj.error;
@@ -17,10 +14,12 @@ const useDataProvider = (dataParams, toFetch) => {
     
     const data = useMemo(() => {
         let newData = []
-
         if(objStatus === "fulfilled") {
-            newData = filterBy(filter, objData);
-            newData = sortBy(sort, newData);
+            newData = [...objData]
+            if(sort || filter) {
+                newData = filterBy(filter, newData);
+                newData = sortBy(sort, newData);
+            }
             setLoading(false);
             return newData;
         }
@@ -36,9 +35,9 @@ const useDataProvider = (dataParams, toFetch) => {
         }
 
         return [];
-    }, [filter, sort, objStatus])
-
-    return {data, loading, setSort, setFilter};
+    }, [filter, sort, objStatus, name])
+    
+    return {data, loading};
 }
 
-export default useDataProvider;
+export { useDataProvider };

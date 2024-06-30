@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Back } from "./Back";
 
 const CreateAny = ({ pageData }) => {
-    const { title, crud, loading, createFormat } = pageData();
+    const { title, crud, loading, createFormat } = pageData().generalData();
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
