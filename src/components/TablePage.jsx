@@ -1,22 +1,34 @@
 import { Page } from "./Page";
 import { UpperNav } from "../styles/UpperNav";
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useMemo, useState } from "react";
 import { StyledTable } from "../styles/StyledTable";
-
+import { filterBy } from "../functions/filterBy";
+import { sortBy } from "../functions/sortBy";
 
 const TablePage = ({ pageData }) => {
-    const { sortDefault, filterDefault, searchFilter } = pageData().tableVariables;
+    const { name, columns, filtersList, crud, loading, sortDefault, filterDefault, searchFilter } = pageData()
     const [sort, setSort] = useState (sortDefault);
     const [filter, setFilter] = useState ({type: filterDefault, word: "", searchOn: searchFilter});
-    const { title, columns, filtersList, crud, data, loading} = pageData().generalData(sort, filter);
     const dispatch = useDispatch();
+    const { data } = useSelector(state => state[name])
 
     useEffect(() => {
         setSort(sortDefault);
         setFilter({type: filterDefault, word: "", searchOn: searchFilter})
     }, [sortDefault, searchFilter])
+    
+    const newData = useMemo(() => {
+        let newArray = [...data]
+
+        if(sort || filter) {
+            newArray = filterBy(filter, newArray);
+            newArray = sortBy(sort, newArray);
+        }
+
+        return newArray;
+    }, [filter, sort, data])
 
     const deleteHandler = id => {
         dispatch(crud.toDelete(id))
@@ -34,13 +46,13 @@ const TablePage = ({ pageData }) => {
 
     return (
         <>
-            <Page title={title} textHandler={textHandler}>
+            <Page title={name} textHandler={textHandler}>
                 <UpperNav>
                     <div>
                         {filtersList.map((filter, i) => <button key={i} onClick={() => setFilter(filterParams => ({...filterParams, type: filter.toFilter}))}>{filter.label}</button>)}
                     </div>
                     <div>
-                        <button><NavLink to="./create">Add {title.slice(0, -1)}</NavLink></button>
+                        <button><NavLink to="./create">Add {name.slice(0, -1)}</NavLink></button>
                     </div>
                 </UpperNav>
                 {!loading ?
@@ -53,7 +65,7 @@ const TablePage = ({ pageData }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((row, i) => 
+                        {newData.map((row, i) => 
                             <tr key={i}>
                                 {columns.map((column, j) => {
                                     if(column.button) {

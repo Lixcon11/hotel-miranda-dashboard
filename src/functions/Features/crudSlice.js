@@ -10,6 +10,7 @@ const crudSlice = (data, name) => {
     const upperSingular = upperPlural.slice(0, -1)
 
     const fetchThunk = thunk(`${name}/fetch${upperPlural}`, "fetch", data)
+    const getThunk = thunk(`${name}/get${upperSingular}`, "get")
     const createThunk = thunk(`${name}/create${upperSingular}`, "create")
     const updateThunk = thunk(`${name}/update${upperSingular}`, "update")
     const deleteThunk = thunk(`${name}/delete${upperSingular}`, "delete")
@@ -19,6 +20,7 @@ const crudSlice = (data, name) => {
         initialState: {
             status: "idle",
             data: [],
+            single: [],
             error: null
         },
         reducers: {},
@@ -30,6 +32,14 @@ const crudSlice = (data, name) => {
             })
             .addCase(fetchThunk.pending, pendingCase())
             .addCase(fetchThunk.rejected, rejectedCase())
+
+            .addCase(getThunk.fulfilled, (state, action) => {
+                fullfilledResponse(state);
+                state.single = state.data.filter(r => r.id == action.payload)
+                //[action.payload];
+            })
+            .addCase(getThunk.pending, pendingCase())
+            .addCase(getThunk.rejected, rejectedCase())
     
             .addCase(createThunk.fulfilled, (state, action) => {
                 fullfilledResponse(state);
@@ -64,7 +74,7 @@ const crudSlice = (data, name) => {
         }
         })
 
-    return [slice, {toFetch:fetchThunk, toCreate: createThunk, toUpdate: updateThunk, toDelete: deleteThunk}]
+    return [slice, {toFetch: fetchThunk, toGet: getThunk, toCreate: createThunk, toUpdate: updateThunk, toDelete: deleteThunk}]
 }
 
 export { crudSlice };

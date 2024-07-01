@@ -1,11 +1,15 @@
 import { useContext } from "react"
 import { Navigate } from "react-router-dom"
 import { AuthContext } from "../../components/AuthContext"
+import { useSelector } from "react-redux"
+import { useLoading } from "../../hooks/useLoading"
 import { usersPageData } from "../users/functions/usersPageData"
 
 const Login = () => {
     const { authDispatch, authState } = useContext(AuthContext);
-    const { data } = usersPageData();
+    usersPageData();
+    const { data } = useSelector(state => state.users)
+
     const submitHandler = e => {
         e.preventDefault();
         const name = e.target.name.value;

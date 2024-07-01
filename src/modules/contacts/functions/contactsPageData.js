@@ -1,7 +1,7 @@
 import { crud } from "../features/contactsSlice";
 import { formats } from "../components/Formats";
-import { pageData } from "../../../functions/pageData";
+import { PageData } from "../../../components/PageData";
 
-const contactsPageData = () => pageData("contacts", formats, crud, "date", "Published", "name")
+const contactsPageData = () => PageData("contacts", formats, crud, "date", "Published", "name")
 
 export { contactsPageData }

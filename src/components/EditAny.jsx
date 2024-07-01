@@ -6,21 +6,22 @@ import { useDispatch } from "react-redux";
 import { Back } from "./Back";
 import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
+import { useGet } from "../hooks/useGet";
 
 const EditAny = ({ pageData }) => {
-    const { title, crud, data, loading } = pageData().generalData();
+    const { name, crud, loading } = pageData()
     const { id } = useParams();
-    const obj = data.filter(obj => obj.id == id)[0];
+    const obj = useGet(name, crud, id)
     const [variable, setVariable] = useState();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { authDispatch, authState } = useContext(AuthContext);
     
     useEffect(()=> {
-        if(!loading){
+        if(obj){
             setVariable({...obj})
         }
-    },[loading]);
+    },[obj]);
 
     const nameList = useMemo(()=>{
         const newList= []
@@ -30,7 +31,7 @@ const EditAny = ({ pageData }) => {
             }
         }
         return newList;
-    }, [loading])
+    }, [obj])
 
     const submitHandler = e => {
         e.preventDefault()
@@ -38,7 +39,7 @@ const EditAny = ({ pageData }) => {
         nameList.map(name => newObj[name] = e.target[name].value)
         dispatch(crud.toUpdate(newObj))
         
-        if(title === "users") {
+        if(name === "users") {
             if(authState.id === obj.id) {
                 authDispatch({type: "updateUser", payload: {name: newObj.name, photo: newObj.photo, email: newObj.email}})
                 console.log(authState)
@@ -49,7 +50,7 @@ const EditAny = ({ pageData }) => {
 
     return (
         <>
-            <Page title={`Edit ${title.slice(0, -1)}`}>
+            <Page title={`Edit ${name.slice(0, -1)}`}>
                 {!loading && variable ? 
                 <>
                     <StyledForm onSubmit={submitHandler}>

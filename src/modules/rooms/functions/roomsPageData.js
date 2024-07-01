@@ -1,7 +1,7 @@
 import { crud } from "../features/roomsSlice";
 import { Formats } from "../components/Formats";
-import { pageData } from "../../../functions/pageData";
+import { PageData } from "../../../components/PageData";
 
-const roomsPageData = () => pageData("rooms", Formats, crud, "roomNumber", undefined, "roomNumber")
+const roomsPageData = () =>  PageData("rooms", Formats, crud, "roomNumber", undefined, "roomNumber")
 
 export { roomsPageData }
