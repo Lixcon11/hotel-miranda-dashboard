@@ -53,6 +53,7 @@ const crudSlice = (data, name) => {
                         break;
                     }
                 }
+                console.log(action.payload)
                 state.data.push({id: newId, ...action.payload})
             })
             .addCase(createThunk.pending, pendingCase())

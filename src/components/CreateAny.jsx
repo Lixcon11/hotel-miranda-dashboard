@@ -13,10 +13,25 @@ const CreateAny = ({ pageData }) => {
 
         const newObj = {}
         createFormat.map(r => {
-            newObj[r.property] = e.target[r.property].value
+            //newObj[r.property] = e.target[r.property].value
+            
+            if(!r.isImage) {
+                newObj[r.property] = e.target[r.property].value
+            }
+            else {
+                const file = e.target[r.property].files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onloadend = () => {
+                        newObj[r.property] = reader.result;
+                    };
+                }
+            }
         })
+        console.log(newObj)
         dispatch(crud.toFetch())
-        dispatch(crud.toCreate({...newObj}))
+        dispatch(crud.toCreate(newObj))
         navigate(-1)
     };
 
@@ -26,7 +41,7 @@ const CreateAny = ({ pageData }) => {
                 {createFormat.map((row, i) => (
                     <div key={i}>
                         <label>{row.label + ": "}</label>
-                        <input name={row.property} type="text"></input>
+                        {row.display ? row.display(row.property) :<input name={row.property} type="text"></input>}
                     </div>
                 ))}
                 <button type="submit">Add</button>

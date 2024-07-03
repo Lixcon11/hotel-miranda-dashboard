@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { PictureUploader } from "../../../components/PictureUploader";
 import { createFormat } from "../../../functions/createFormats";
 import { ImageContainerTable } from "../../../styles/ImageContainerTable";
 import { MediumImg } from "../../../styles/MediumImg";
@@ -40,7 +42,12 @@ const formats = createFormat(
         {label: "Status", property: "status"}
     ],
     [
-        {label: "Photo", property: "photo"},
+        {label: "Photo", property: "photo", display: (name) => {
+            //const [image, setImage] = useState(null);
+            return(
+                <PictureUploader /*image={image} setImage={setImage}*/ name={name}/>
+            )
+        }, isImage: true},
         {label: "Name", property: "name"},
         {label: "Email", property: "email"},
         {label: "Phone", property: "phone"},
