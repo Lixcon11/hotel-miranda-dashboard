@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { StyledTable } from "../styles/StyledTable";
 import { filterBy } from "../functions/filterBy";
 import { sortBy } from "../functions/sortBy";
+import { CreateButton } from "../styles/CreateButton";
 
 const TablePage = ({ pageData }) => {
     const { name, columns, filtersList, crud, loading, sortDefault, filterDefault, searchFilter } = pageData()
@@ -52,7 +53,7 @@ const TablePage = ({ pageData }) => {
                         {filtersList.map((filter, i) => <button key={i} onClick={() => setFilter(filterParams => ({...filterParams, type: filter.toFilter}))}>{filter.label}</button>)}
                     </div>
                     <div>
-                        <button><NavLink to="./create">Add {name.slice(0, -1)}</NavLink></button>
+                        <CreateButton><NavLink to="./create">Add {name.slice(0, -1)}</NavLink></CreateButton>
                     </div>
                 </UpperNav>
                 {!loading ?
