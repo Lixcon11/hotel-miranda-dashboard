@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import styled from "styled-components"
 import { AuthContext } from "./AuthContext"
+import { MiniImageProfile } from "../styles/ImageProfile"
 
 const StyledHeader = styled.header`
 width: 100%;
@@ -9,6 +10,8 @@ display: flex;
 justify-content: space-evenly;
 align-items: center;
 position: fixed;
+padding-left: 150px;
+//left: 280px;
 background-color: white;
 
     h1 {
@@ -22,16 +25,11 @@ background-color: white;
         display: flex;
         gap: 15px;
         align-items: center;
-
-        img {
-            width: 40px;
-            height: 40px;
-        }
     }
 
 @media only screen and (min-width: 1000px) {
 height: 120px;
-
+padding-left: 310px;
     img {
         width: 60px;
         height: 60px;
@@ -66,7 +64,7 @@ const Page = ({ children, title, textHandler }) => {
                         <p>Hi {authState.name}</p>
                         <p>{authState.email}</p>
                     </div>
-                    <img src={authState.photo}></img>
+                    <MiniImageProfile src={authState.photo}/>
                 </div>
             </StyledHeader>
             <Space>

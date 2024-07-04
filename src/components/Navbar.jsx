@@ -8,11 +8,13 @@ const StyledSidebar = styled.nav`
   width: 120px;
   position: fixed;
   z-index: 1;
-  top: 50px;
+  //top: 50px;
   left: 0;
   background-color: white;
   overflow-x: hidden;
-  padding-top: 20px;
+  padding-top: 70px;
+  //padding-top: 20px;
+  box-shadow: 0px 3px 10px #00000005;
   
     & a {
         padding: 6px 8px 6px 16px;
@@ -24,7 +26,8 @@ const StyledSidebar = styled.nav`
 
 @media only screen and (min-width: 1000px) {
     width: 345px;
-    top: 120px;
+    //top: 120px;
+    padding-top: 140px;
 }
 `
 

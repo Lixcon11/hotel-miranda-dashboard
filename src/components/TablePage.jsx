@@ -14,21 +14,29 @@ const TablePage = ({ pageData }) => {
     const [filter, setFilter] = useState ({type: filterDefault, word: "", searchOn: searchFilter});
     const dispatch = useDispatch();
     const { data } = useSelector(state => state[name])
+    const [page, setPage] = useState(0)
 
     useEffect(() => {
         setSort(sortDefault);
         setFilter({type: filterDefault, word: "", searchOn: searchFilter})
     }, [sortDefault, searchFilter])
     
-    const newData = useMemo(() => {
+    const pageArray = useMemo(() => {
         let newArray = [...data]
-
         if(sort || filter) {
             newArray = filterBy(filter, newArray);
             newArray = sortBy(sort, newArray);
         }
 
-        return newArray;
+        const pageArray = []
+        const pageSize = 10;
+        while(newArray.length > pageSize) {
+            pageArray.push(newArray.splice(0, pageSize))
+        }
+        pageArray.push(newArray)
+        setPage(0);
+        
+        return pageArray;
     }, [filter, sort, data])
 
     const deleteHandler = id => {
@@ -66,7 +74,7 @@ const TablePage = ({ pageData }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {newData.map((row, i) => 
+                        {pageArray[page].map((row, i) => 
                             <tr key={i}>
                                 {columns.map((column, j) => {
                                     if(column.button) {
@@ -83,6 +91,9 @@ const TablePage = ({ pageData }) => {
                 </StyledTable>
                 :
                 <p>Loading</p>}
+                <button onClick={() => setPage(page => page === 0 ? 0: page-1)}>{"<"}</button>
+                {pageArray.map((array,i) => <button onClick={() => setPage(i)}>{i+1}</button>)}
+                <button onClick={() => setPage(page => page === pageArray.length-1 ? pageArray.length-1: page+1)}>{">"}</button>
             </Page>
         </>
     )

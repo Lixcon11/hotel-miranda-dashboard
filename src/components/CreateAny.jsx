@@ -40,7 +40,7 @@ const CreateAny = ({ pageData }) => {
             <form onSubmit={submitHandler}>
                 {createFormat.map((row, i) => (
                     <div key={i}>
-                        <label>{row.label + ": "}</label>
+                        {row.label ? <label>{row.label + ": "}</label> : null}
                         {row.display ? row.display(row.property) :<input name={row.property} type="text"></input>}
                     </div>
                 ))}

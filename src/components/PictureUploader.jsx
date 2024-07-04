@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { ImageProfile } from '../styles/ImageProfile';
 
 const PictureUploader = ( {name} ) => {
   const [image, setImage] = useState(null);
@@ -19,7 +20,7 @@ const PictureUploader = ( {name} ) => {
     <ImageDisplayer>
       <div>
         {image ? 
-          <img src={image} alt="Profile"/>
+          <ImageProfile src={image} alt="Profile"/>
          : (
           <div>
             No Image
@@ -39,13 +40,9 @@ text-align: center;
 margin-top: 20px;
 
     div {
-        margin-bottom: 10px;
-
-        img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-        }
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
 
         div {
             width: 150px;
@@ -69,7 +66,7 @@ margin-top: 20px;
         background-color: #135846;
         color: #fff;
         padding: 10px 20px;
-        border-radius: 5px;
+        border-radius: 12px;
     }
 
 `

@@ -3,6 +3,7 @@ import { PictureUploader } from "../../../components/PictureUploader";
 import { createFormat } from "../../../functions/createFormats";
 import { ImageContainerTable } from "../../../styles/ImageContainerTable";
 import { MediumImg } from "../../../styles/MediumImg";
+import { ImageProfile } from "../../../styles/ImageProfile";
 
 const formats = createFormat(
     [
@@ -32,7 +33,7 @@ const formats = createFormat(
         {label: "Status", property: "status"}
     ],
     [
-        {display: (user, i) => <MediumImg key={i} src={user.photo}/>},
+        {display: (user, i) => <ImageProfile key={i} src={user.photo}/>},
         {label: "Name", property: "name"},
         {label: "Email", property: "email"},
         {label: "Phone", property: "phone"},
@@ -42,12 +43,7 @@ const formats = createFormat(
         {label: "Status", property: "status"}
     ],
     [
-        {label: "Photo", property: "photo", display: (name) => {
-            //const [image, setImage] = useState(null);
-            return(
-                <PictureUploader /*image={image} setImage={setImage}*/ name={name}/>
-            )
-        }, isImage: true},
+        {property: "photo", display: (name) => <PictureUploader name={name}/>, isImage: true},
         {label: "Name", property: "name"},
         {label: "Email", property: "email"},
         {label: "Phone", property: "phone"},
