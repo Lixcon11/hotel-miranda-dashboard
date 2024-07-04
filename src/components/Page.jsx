@@ -10,8 +10,7 @@ display: flex;
 justify-content: space-evenly;
 align-items: center;
 position: fixed;
-padding-left: 150px;
-//left: 280px;
+padding-left: 130px;
 background-color: white;
 
     h1 {
@@ -19,6 +18,10 @@ background-color: white;
         color: #262626;
         font-weight: 600;
         text-transform: capitalize;
+    }
+
+    form input {
+        width: 100px;
     }
 
     > div {
@@ -29,10 +32,14 @@ background-color: white;
 
 @media only screen and (min-width: 1000px) {
 height: 120px;
-padding-left: 310px;
+padding-left: 325px;
     img {
         width: 60px;
         height: 60px;
+    }
+
+    form input {
+        width: auto;
     }
 }
 `

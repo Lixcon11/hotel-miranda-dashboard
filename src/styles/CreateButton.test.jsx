@@ -8,11 +8,11 @@ import { render, screen } from '@testing-library/react';
 import { CreateButton } from './CreateButton';
 
 it('The button is white', () => {
-  render(<CreateButton>tosubmit</CreateButton>)
+  render(<CreateButton $backgroundColor="green">tosubmit</CreateButton>)
   
   expect(screen.getByRole("button", {name: /tosubmit/i})).toHaveStyle({
     color: "white",
-    backgroundColor: "#135846"
+    backgroundColor: "green"
   })
     
 })
