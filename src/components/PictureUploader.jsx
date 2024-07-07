@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { ImageProfile } from '../styles/ImageProfile';
+import { BedImage, ImageProfile } from '../styles/ImageProfile';
 
-const PictureUploader = ( {name} ) => {
+const PictureUploader = ( {name, isBed} ) => {
   const [image, setImage] = useState(null);
 
   const handleImageChange = (e) => {
@@ -17,10 +17,10 @@ const PictureUploader = ( {name} ) => {
   };
 
   return (
-    <ImageDisplayer>
+    <ImageDisplayer $isBed={isBed}>
       <div>
         {image ? 
-          <ImageProfile src={image} alt="Profile"/>
+          isBed ? <BedImage src={image} alt="Bed"/> : <ImageProfile src={image} alt="Profile"/>
          : (
           <div>
             No Image
@@ -45,9 +45,9 @@ margin-top: 20px;
         justify-content: center;
 
         div {
-            width: 150px;
+            width: ${props => props.$isBed === true ? "250px": "150px"};
             height: 150px;
-            border-radius: 50%;
+            border-radius: ${props => props.$isBed === true ? "10%": "50%"};
             background-color: #ccc;
             display: flex;
             align-items: center;

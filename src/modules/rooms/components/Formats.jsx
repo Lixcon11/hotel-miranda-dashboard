@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { createFormat } from "../../../functions/createFormats";
 import { ImageContainerTable } from "../../../styles/ImageContainerTable";
 import { MediumImg } from "../../../styles/MediumImg";
+import { PictureUploader } from "../../../components/PictureUploader";
 
 const Formats = createFormat(
     [
@@ -55,7 +56,13 @@ const Formats = createFormat(
         {label: "Status", property: "status"}
     ],
     [
-        //to Add
+        {property: "photos", display: (name) => (
+            <BedFrame>
+                <PictureUploader name={name + "0"} isBed ={true}/>
+                <PictureUploader name={name + "1"} isBed ={true}/>
+                <PictureUploader name={name + "2"} isBed ={true}/>
+            </BedFrame>
+        ), isImage: true},
     ],
     [
         {label: "All", toFilter: ""},
@@ -63,6 +70,11 @@ const Formats = createFormat(
         {label: "Booked", toFilter: "Booked"}
     ]
 )
+
+const BedFrame = styled.div`
+display: flex;
+justify-content: space-evenly;
+`
 
 const Night = styled.div`
 display: flex;

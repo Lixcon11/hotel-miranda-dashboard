@@ -11,4 +11,9 @@ const MiniImageProfile = styled(ImageProfile)`
     height: 40px;
 `
 
-export { ImageProfile, MiniImageProfile }
+const BedImage = styled(ImageProfile)`
+    border-radius: 10%;
+    width:  270px;
+`
+
+export { ImageProfile, MiniImageProfile, BedImage }

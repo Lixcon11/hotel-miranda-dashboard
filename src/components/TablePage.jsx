@@ -92,7 +92,7 @@ const TablePage = ({ pageData }) => {
                 :
                 <p>Loading</p>}
                 <button onClick={() => setPage(page => page === 0 ? 0: page-1)}>{"<"}</button>
-                {pageArray.map((array,i) => <button onClick={() => setPage(i)}>{i+1}</button>)}
+                {pageArray.map((array,i) => <button key={i} onClick={() => setPage(i)}>{i+1}</button>)}
                 <button onClick={() => setPage(page => page === pageArray.length-1 ? pageArray.length-1: page+1)}>{">"}</button>
             </Page>
         </>

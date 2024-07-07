@@ -16,7 +16,15 @@ const CreateAny = ({ pageData }) => {
             //newObj[r.property] = e.target[r.property].value
             
             if(!r.isImage) {
-                newObj[r.property] = e.target[r.property].value
+                if(e.target[r.property]) {
+                    newObj[r.property] = e.target[r.property].value
+                }
+                else {
+                    let index = 0;
+                    while(e.target[r.property + index]) {
+                        newObj[r.property][index] = e.target[r.property + index].value
+                    }
+                }
             }
             else {
                 const file = e.target[r.property].files[0];
@@ -29,8 +37,7 @@ const CreateAny = ({ pageData }) => {
                 }
             }
         })
-        console.log(newObj)
-        dispatch(crud.toFetch())
+
         dispatch(crud.toCreate(newObj))
         navigate(-1)
     };
