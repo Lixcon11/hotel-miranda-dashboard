@@ -3,6 +3,7 @@ import { createFormat } from "../../../functions/createFormats";
 import { ImageContainerTable } from "../../../styles/ImageContainerTable";
 import { MediumImg } from "../../../styles/MediumImg";
 import { PictureUploader } from "../../../components/PictureUploader";
+import { amenities } from "../functions/amenities";
 
 const Formats = createFormat(
     [
@@ -63,6 +64,19 @@ const Formats = createFormat(
                 <PictureUploader name={name + "2"} isBed ={true}/>
             </BedFrame>
         ), isImage: true},
+        {label: "Room Number", property: "roomNumber"},
+        {label: "Amenities", property: "amenities", display: (name) => (
+            <>
+                {amenities.map((amenitie, i) => (
+                      
+                      <label key={i}>
+                        <input type="checkbox"  name={amenitie + i} value={amenitie}/>
+                        {amenitie}
+                    </label>
+                    
+                ))}
+            </>
+        ), isCheckBox: true}
     ],
     [
         {label: "All", toFilter: ""},

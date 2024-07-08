@@ -27,8 +27,8 @@ const PictureUploader = ( {name, isBed} ) => {
           </div>
         )}
       </div>
-      <input type="file" accept="image/*" id="file-input" name={name} onChange={handleImageChange}/>
-      <label htmlFor="file-input">
+      <input type="file" accept="image/*" id={`file-input-${name}`} name={name} onChange={handleImageChange}/>
+      <label htmlFor={`file-input-${name}`}>
         Upload Photo
       </label>
     </ImageDisplayer>

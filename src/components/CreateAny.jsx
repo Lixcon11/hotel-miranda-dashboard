@@ -15,28 +15,39 @@ const CreateAny = ({ pageData }) => {
         createFormat.map(r => {
             //newObj[r.property] = e.target[r.property].value
             
-            if(!r.isImage) {
+            if(!r.isImage && !r.isCheckbox) {
+                newObj[r.property] = e.target[r.property].value
+            }
+            else {
                 if(e.target[r.property]) {
-                    newObj[r.property] = e.target[r.property].value
+                    const file = e.target[r.property].files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onloadend = () => {
+                            newObj[r.property] = reader.result;
+                        };
+                    }
                 }
                 else {
                     let index = 0;
+                    newObj[r.property] = []
                     while(e.target[r.property + index]) {
-                        newObj[r.property][index] = e.target[r.property + index].value
+                        const file = e.target[r.property + index].files[0];
+                        console.log(file)
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.readAsDataURL(file);
+                            reader.onloadend = () => {
+                                newObj[r.property].push(reader.result);
+                            };
+                        }
+                        index++;
                     }
                 }
             }
-            else {
-                const file = e.target[r.property].files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(file);
-                    reader.onloadend = () => {
-                        newObj[r.property] = reader.result;
-                    };
-                }
-            }
         })
+        console.log(newObj)
 
         dispatch(crud.toCreate(newObj))
         navigate(-1)
