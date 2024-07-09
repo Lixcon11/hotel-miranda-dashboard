@@ -2,25 +2,28 @@ import { useContext } from "react"
 import { Navigate } from "react-router-dom"
 import { AuthContext } from "../../components/AuthContext"
 import { useSelector } from "react-redux"
-import { useLoading } from "../../hooks/useLoading"
 import { usersPageData } from "../users/functions/usersPageData"
+import React from "react"
 
 const Login = () => {
-    const { authDispatch, authState } = useContext(AuthContext);
+    const context = useContext(AuthContext);
+    let authDispatch = context !== null ? context.authDispatch: null;
+    let authState = context !== null ? context.authState: null;
+
     usersPageData();
     const { data } = useSelector(state => state.users)
 
-    const submitHandler = e => {
+    const submitHandler = (e: any) => {
         e.preventDefault();
         const name = e.target.name.value;
         const password = e.target.password.value;
         const user = data.filter(user => user.name === name && user.password === password)[0];
-        if(user) {
-            authDispatch({type: "logIn", payload: {name: user.name, photo: user.photo, email: user.email, id: user.id}})
+        if(authDispatch !== null && user) {
+            authDispatch({type: "logIn", payload: {name: user.name, photo: user.photo, email: user.email, id: user.id, isLoggedIn: true}})
         }
     }
 
-    if(!authState.isLoggedIn){
+    if(authState !== null && !authState.isLoggedIn){
         return (
             <>
                 <h1>Login</h1>

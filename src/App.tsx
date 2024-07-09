@@ -14,6 +14,7 @@ import { CreateAny } from "./components/CreateAny"
 import { contactsPageData } from "./modules/contacts/functions/contactsPageData"
 import { roomsPageData } from "./modules/rooms/functions/roomsPageData"
 import { bookingsPageData } from "./modules/bookings/functions/bookingsPageData"
+import React from "react"
 
 const usersData = usersPageData;
 const contactsData = contactsPageData;

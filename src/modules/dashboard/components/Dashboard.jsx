@@ -1,6 +1,6 @@
 import { Page } from "../../../components/Page"
 
-const Dashboard = ({ setAuth }) => {
+const Dashboard = () => {
     return (
         <>
             <Page title="Dashboard"></Page>
