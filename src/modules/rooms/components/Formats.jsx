@@ -44,7 +44,7 @@ const Formats = createFormat(
         {label: "Status", property: "status"}
     ],
     [
-        {display: (room, i) => room.photos.map(photo => <MediumImg key={i} src={photo}/>)},
+        {display: (room) => room.photos.map((photo, i) => <MediumImg key={i} src={photo}/>)},
         {label: "Room Number", property: "roomNumber"},
         {label: "Room Type", property: "roomType"},
         {label: "Amenities", display: room => (
@@ -65,18 +65,22 @@ const Formats = createFormat(
             </BedFrame>
         ), isImage: true},
         {label: "Room Number", property: "roomNumber"},
+        {label: "Room Type", property: "roomType"},
         {label: "Amenities", property: "amenities", display: (name) => (
             <>
                 {amenities.map((amenitie, i) => (
                       
                       <label key={i}>
-                        <input type="checkbox"  name={amenitie + i} value={amenitie}/>
+                        <input type="checkbox"  name={name + i} value={amenitie}/>
                         {amenitie}
                     </label>
                     
                 ))}
             </>
-        ), isCheckBox: true}
+        ), isCheckbox: true},
+        {label: "Price", property: "price"},
+        {label: "Discount", property: "discount"},
+        {label: "Status", property: "status"}
     ],
     [
         {label: "All", toFilter: ""},

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Page } from "./Page";
 import { useDispatch } from "react-redux";
 import { Back } from "./Back";
+import { amenities } from "../modules/rooms/functions/amenities";
 
 const CreateAny = ({ pageData }) => {
     const { name, crud, createFormat } = pageData()
@@ -13,10 +14,18 @@ const CreateAny = ({ pageData }) => {
 
         const newObj = {}
         createFormat.map(r => {
-            //newObj[r.property] = e.target[r.property].value
             
             if(!r.isImage && !r.isCheckbox) {
                 newObj[r.property] = e.target[r.property].value
+            }
+            else if(r.isCheckbox) {
+                newObj[r.property] = []
+                for(let i = 0; i < amenities.length; i++) {
+                    if(e.target[r.property + i].checked) {
+
+                        newObj[r.property].push(e.target[r.property + i].value)
+                    }
+                }
             }
             else {
                 if(e.target[r.property]) {

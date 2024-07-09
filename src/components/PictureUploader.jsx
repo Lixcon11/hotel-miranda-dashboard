@@ -38,6 +38,7 @@ const PictureUploader = ( {name, isBed} ) => {
 const ImageDisplayer = styled.div`
 text-align: center;
 margin-top: 20px;
+margin-bottom: 20px;
 
     div {
         margin-bottom: 20px;
