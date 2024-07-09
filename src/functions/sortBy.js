@@ -3,12 +3,15 @@ const sortBy = (string, data) => {
     const newData = [...data];
 
     switch(string) {
+        case "checkOutDate":
+        case "checkInDate":
+        case "orderDate":
         case "date": newData.sort((a, b) => {
             let dateA;
             let dateB;
             
-            dateA = new Date(a.date);
-            dateB = new Date(b.date);
+            dateA = new Date(a[string]);
+            dateB = new Date(b[string]);
             
             return dateA - dateB;
         })

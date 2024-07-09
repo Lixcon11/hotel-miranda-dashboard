@@ -1,25 +1,583 @@
-[{"id":1,"name":"Liza Friedlos","check_in":"7/12/2023","check_out":"4/1/2024","room_info":"eu felis fusce posuere felis sed lacus morbi sem mauris","price":"$470.81","special_request":"duis consequat dui nec nisi volutpat eleifend donec ut dolor morbi vel lectus","ameneties":[{},{},{},{}]},
-{"id":2,"name":"Jonah Tweede","check_in":"9/17/2023","check_out":"6/16/2024","room_info":"proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula","price":"$170.81","special_request":"at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut","ameneties":[]},
-{"id":3,"name":"Raychel Vaen","check_in":"11/10/2023","check_out":"11/25/2023","room_info":"dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor","price":"$237.66","special_request":"tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi","ameneties":[]},
-{"id":4,"name":"Garey Poulston","check_in":"9/18/2023","check_out":"7/13/2023","room_info":"in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum","price":"$222.47","special_request":"iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo","ameneties":[{},{},{},{},{}]},
-{"id":5,"name":"Hobart Leggate","check_in":"2/3/2024","check_out":"12/14/2023","room_info":"semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in","price":"$341.14","special_request":"dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo","ameneties":[{},{},{}]},
-{"id":6,"name":"Denney Lutz","check_in":"3/31/2024","check_out":"3/29/2024","room_info":"aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit","price":"$385.94","special_request":"velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra","ameneties":[]},
-{"id":7,"name":"Ulrike Maffiotti","check_in":"10/22/2023","check_out":"3/11/2024","room_info":"imperdiet nullam orci pede venenatis non sodales sed tincidunt eu","price":"$113.15","special_request":"lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis","ameneties":[{},{}]},
-{"id":8,"name":"Winslow Ranking","check_in":"6/16/2024","check_out":"7/24/2023","room_info":"amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque","price":"$450.96","special_request":"proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante","ameneties":[{}]},
-{"id":9,"name":"Xylina Coyish","check_in":"8/24/2023","check_out":"5/15/2024","room_info":"molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis","price":"$337.25","special_request":"luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce","ameneties":[{},{},{}]},
-{"id":10,"name":"Katerine Mortel","check_in":"10/6/2023","check_out":"7/3/2023","room_info":"eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor","price":"$104.38","special_request":"rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat","ameneties":[{},{},{},{},{}]},
-{"id":11,"name":"Vincenz Velten","check_in":"6/11/2024","check_out":"1/30/2024","room_info":"sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id ornare","price":"$114.61","special_request":"vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere","ameneties":[{},{}]},
-{"id":12,"name":"Carmine Embleton","check_in":"4/28/2024","check_out":"11/12/2023","room_info":"sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod","price":"$336.90","special_request":"turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis","ameneties":[{},{},{},{}]},
-{"id":13,"name":"Salli Gaddie","check_in":"2/5/2024","check_out":"3/31/2024","room_info":"sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie","price":"$465.95","special_request":"id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris","ameneties":[{},{},{}]},
-{"id":14,"name":"Leoine Revel","check_in":"6/5/2024","check_out":"4/29/2024","room_info":"integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id","price":"$231.26","special_request":"vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec","ameneties":[{},{},{},{}]},
-{"id":15,"name":"Eunice Bulter","check_in":"11/28/2023","check_out":"2/29/2024","room_info":"habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer","price":"$372.43","special_request":"nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia","ameneties":[{},{},{}]},
-{"id":16,"name":"Nero Ewins","check_in":"8/10/2023","check_out":"1/10/2024","room_info":"nulla sed accumsan felis ut at dolor quis odio consequat varius","price":"$266.70","special_request":"rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum","ameneties":[{},{}]},
-{"id":17,"name":"Gardy Brome","check_in":"5/5/2024","check_out":"5/10/2024","room_info":"pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet","price":"$272.97","special_request":"platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante","ameneties":[{}]},
-{"id":18,"name":"Rosalind Clint","check_in":"6/17/2024","check_out":"11/22/2023","room_info":"luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur","price":"$157.82","special_request":"venenatis lacinia aenean sit amet justo morbi ut odio cras mi","ameneties":[{},{},{},{},{}]},
-{"id":19,"name":"Ulla Boyce","check_in":"5/23/2024","check_out":"12/3/2023","room_info":"sapien sapien non mi integer ac neque duis bibendum morbi","price":"$292.25","special_request":"lacus at turpis donec posuere metus vitae ipsum aliquam non mauris","ameneties":[{},{}]},
-{"id":20,"name":"Minna Flatman","check_in":"2/2/2024","check_out":"5/19/2024","room_info":"magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien","price":"$227.66","special_request":"sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper","ameneties":[]},
-{"id":21,"name":"Evonne Hymas","check_in":"11/22/2023","check_out":"5/29/2024","room_info":"sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum","price":"$268.84","special_request":"mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet","ameneties":[{},{},{}]},
-{"id":22,"name":"Nikos Woodyatt","check_in":"5/30/2024","check_out":"11/20/2023","room_info":"cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque","price":"$405.25","special_request":"diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam","ameneties":[{}]},
-{"id":23,"name":"Norine Soffe","check_in":"3/14/2024","check_out":"8/3/2023","room_info":"at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed","price":"$445.10","special_request":"eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat","ameneties":[]},
-{"id":24,"name":"Alphonso Halwill","check_in":"5/27/2024","check_out":"7/18/2023","room_info":"tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris","price":"$449.70","special_request":"eleifend donec ut dolor morbi vel lectus in quam fringilla","ameneties":[{},{},{},{}]},
-{"id":25,"name":"Jorry Sandle","check_in":"5/23/2024","check_out":"3/30/2024","room_info":"pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac","price":"$478.06","special_request":"pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa","ameneties":[{},{}]}]
+[
+    {
+      "id": 1,
+      "name": "John Doe",
+      "orderDate": "2024-07-09",
+      "checkInDate": "2024-07-15",
+      "checkOutDate": "2024-07-20",
+      "specialRequest": "Late check-in at 8 PM. Please provide extra pillows and ensure a non-smoking room. Need a baby crib.",
+      "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+          "https://i.imgur.com/qgLYOQn.jpeg",
+          "https://i.imgur.com/4quqP9B.jpeg",
+          "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+          "AC",
+          "Wifi",
+          "Cleaning",
+          "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+      },
+      "status": "Check Out"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "orderDate": "2024-06-01",
+      "checkInDate": "2024-07-12",
+      "checkOutDate": "2024-07-18",
+      "specialRequest": "Require airport pickup service and breakfast in the room. Please ensure the room is on a higher floor with a view.",
+      "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+          "https://i.imgur.com/qgLYOQn.jpeg",
+          "https://i.imgur.com/4quqP9B.jpeg",
+          "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+          "AC",
+          "Wifi",
+          "Cleaning",
+          "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+      },
+      "status": "In Progress"
+    },
+    {
+      "id": 3,
+      "name": "Michael Brown",
+      "orderDate": "2024-05-15",
+      "checkInDate": "2024-07-20",
+      "checkOutDate": "2024-07-25",
+      "specialRequest": "Please make sure to have a mini fridge in the room. I will need late check-out at 2 PM.",
+      "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+          "https://i.imgur.com/qgLYOQn.jpeg",
+          "https://i.imgur.com/4quqP9B.jpeg",
+          "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+          "AC",
+          "Wifi",
+          "Cleaning",
+          "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+      },
+      "status": "Check In"
+    },
+    {
+      "id": 4,
+      "name": "Emily Johnson",
+      "orderDate": "2024-07-02",
+      "checkInDate": "2024-07-22",
+      "checkOutDate": "2024-07-28",
+      "specialRequest": "Would like a room with a bathtub. Please arrange for a bouquet of flowers in the room upon arrival.",
+      "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+          "https://i.imgur.com/qgLYOQn.jpeg",
+          "https://i.imgur.com/4quqP9B.jpeg",
+          "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+          "AC",
+          "Wifi",
+          "Cleaning",
+          "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+      },
+      "status": "In Progress"
+    },
+    {
+      "id": 5,
+      "name": "Chris Davis",
+      "orderDate": "2024-07-01",
+      "checkInDate": "2024-07-19",
+      "checkOutDate": "2024-07-23",
+      "specialRequest": "Please ensure extra blankets are available in the room. A bottle of red wine would be appreciated.",
+      "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+          "https://i.imgur.com/qgLYOQn.jpeg",
+          "https://i.imgur.com/4quqP9B.jpeg",
+          "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+          "AC",
+          "Wifi",
+          "Cleaning",
+          "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+      },
+      "status": "Check Out"
+    },
+    {
+      "id": 6,
+      "name": "Jessica Martinez",
+      "orderDate": "2024-06-30",
+      "checkInDate": "2024-07-25",
+      "checkOutDate": "2024-07-30",
+      "specialRequest": "Please ensure there is a yoga mat in the room. I will need an early check-in at 10 AM.",
+      "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+          "https://i.imgur.com/qgLYOQn.jpeg",
+          "https://i.imgur.com/4quqPs9B.jpeg",
+          "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+          "AC",
+          "Wifi",
+          "Cleaning",
+          "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+      },
+      "status": "In Progress"
+    },
+    {
+      "id": 7,
+      "name": "Matthew White",
+      "orderDate": "2024-07-05",
+      "checkInDate": "2024-07-27",
+      "checkOutDate": "2024-08-02",
+      "specialRequest": "Need a quiet room away from the elevators. A fruit basket upon arrival would be nice.",
+      "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+          "https://i.imgur.com/qgLYOQn.jpeg",
+          "https://i.imgur.com/4quqP9B.jpeg",
+          "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+          "AC",
+          "Wifi",
+          "Cleaning",
+          "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+      },
+      "status": "In Progress"
+    },
+    {
+      "id": 8,
+      "name": "Sarah Green",
+      "orderDate": "2024-06-25",
+      "checkInDate": "2024-07-17",
+      "checkOutDate": "2024-07-21",
+      "specialRequest": "Would like a room with an ocean view if possible. Need gluten-free breakfast options.",
+      "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+          "https://i.imgur.com/qgLYOQn.jpeg",
+          "https://i.imgur.com/4quqP9B.jpeg",
+          "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+          "AC",
+          "Wifi",
+          "Cleaning",
+          "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+      },
+      "status": "Check In"
+    },
+    {
+      "id": 9,
+      "name": "David King",
+      "orderDate": "2024-06-20",
+      "checkInDate": "2024-07-16",
+      "checkOutDate": "2024-07-20",
+      "specialRequest": "Please provide extra towels and a bathrobe. Need a firm pillow for neck support.",
+      "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+            "https://i.imgur.com/qgLYOQn.jpeg",
+            "https://i.imgur.com/4quqP9B.jpeg",
+            "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+            "AC",
+            "Wifi",
+            "Cleaning",
+            "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+        },
+        "status": "In Progress"
+    },
+    {
+    "id": 10,
+    "name": "Laura Lee",
+    "orderDate": "2024-07-06",
+    "checkInDate": "2024-07-26",
+    "checkOutDate": "2024-08-01",
+    "specialRequest": "Need vegan breakfast options. Please provide a room with a garden view.",
+    "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+        "https://i.imgur.com/qgLYOQn.jpeg",
+        "https://i.imgur.com/4quqP9B.jpeg",
+        "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+        "AC",
+        "Wifi",
+        "Cleaning",
+        "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+    },
+    "status": "In Progress"
+    },
+    {
+    "id": 11,
+    "name": "James Moore",
+    "orderDate": "2024-06-27",
+    "checkInDate": "2024-07-23",
+    "checkOutDate": "2024-07-27",
+    "specialRequest": "Please ensure the room has a work desk and a good reading lamp. Need daily newspaper delivery.",
+    "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+        "https://i.imgur.com/qgLYOQn.jpeg",
+        "https://i.imgur.com/4quqP9B.jpeg",
+        "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+        "AC",
+        "Wifi",
+        "Cleaning",
+        "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+    },
+    "status": "Check In"
+    },
+    {
+    "id": 12,
+    "name": "Olivia Thompson",
+    "orderDate": "2024-07-04",
+    "checkInDate": "2024-07-28",
+    "checkOutDate": "2024-08-03",
+    "specialRequest": "Require hypoallergenic bedding. Please make sure the room is fragrance-free.",
+    "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+        "https://i.imgur.com/qgLYOQn.jpeg",
+        "https://i.imgur.com/4quqP9B.jpeg",
+        "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+        "AC",
+        "Wifi",
+        "Cleaning",
+        "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+    },
+    "status": "In Progress"
+    },
+    {
+    "id": 13,
+    "name": "Daniel Harris",
+    "orderDate": "2024-06-18",
+    "checkInDate": "2024-07-10",
+    "checkOutDate": "2024-07-14",
+    "specialRequest": "Would like a room with a mountain view. Please ensure the room has a kitchenette.",
+    "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+        "https://i.imgur.com/qgLYOQn.jpeg",
+        "https://i.imgur.com/4quqP9B.jpeg",
+        "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+        "AC",
+        "Wifi",
+        "Cleaning",
+        "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+    },
+    "status": "Check In"
+    },
+    {
+    "id": 14,
+    "name": "Sophia Wilson",
+    "orderDate": "2024-06-22",
+    "checkInDate": "2024-07-24",
+    "checkOutDate": "2024-07-30",
+    "specialRequest": "Please ensure the room has blackout curtains. Need a soft pillow for sleeping.",
+    "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+        "https://i.imgur.com/qgLYOQn.jpeg",
+        "https://i.imgur.com/4quqP9B.jpeg",
+        "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+        "AC",
+        "Wifi",
+        "Cleaning",
+        "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+    },
+    "status": "In Progress"
+    },
+    {
+    "id": 15,
+    "name": "Jackson Clark",
+    "orderDate": "2024-07-03",
+    "checkInDate": "2024-07-21",
+    "checkOutDate": "2024-07-26",
+    "specialRequest": "Would like a room with a balcony and a view of the city skyline. Need extra hangers in the closet.",
+    "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+        "https://i.imgur.com/qgLYOQn.jpeg",
+        "https://i.imgur.com/4quqP9B.jpeg",
+        "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+        "AC",
+        "Wifi",
+        "Cleaning",
+        "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+    },
+    "status": "In Progress"
+    },
+    {
+    "id": 16,
+    "name": "Mia Lewis",
+    "orderDate": "2024-06-29",
+    "checkInDate": "2024-07-29",
+    "checkOutDate": "2024-08-04",
+    "specialRequest": "Please provide a room with an ergonomic chair for working. Need extra outlets for charging devices.",
+    "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+        "https://i.imgur.com/qgLYOQn.jpeg",
+        "https://i.imgur.com/4quqP9B.jpeg",
+        "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+        "AC",
+        "Wifi",
+        "Cleaning",
+        "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+    },
+    "status": "Check In"
+    },
+    {
+    "id": 17,
+    "name": "Ethan Walker",
+    "orderDate": "2024-07-07",
+    "checkInDate": "2024-07-31",
+    "checkOutDate": "2024-08-05",
+    "specialRequest": "Need a quiet room with soundproof windows. Please provide a coffee maker in the room.",
+    "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+        "https://i.imgur.com/qgLYOQn.jpeg",
+        "https://i.imgur.com/4quqP9B.jpeg",
+        "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+        "AC",
+        "Wifi",
+        "Cleaning",
+        "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+    },
+    "status": "Check Out"
+    },
+    {
+    "id": 18,
+    "name": "Ava Scott",
+    "orderDate": "2024-07-08",
+    "checkInDate": "2024-07-25",
+    "checkOutDate": "2024-07-30",
+    "specialRequest": "Please provide a baby crib and a high chair in the room. Need a room on a lower floor.",
+    "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+        "https://i.imgur.com/qgLYOQn.jpeg",
+        "https://i.imgur.com/4quqP9B.jpeg",
+        "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+        "AC",
+        "Wifi",
+        "Cleaning",
+        "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+    },
+    "status": "In Progress"
+    },
+    {
+    "id": 19,
+    "name": "Mason Hall",
+    "orderDate": "2024-07-02",
+    "checkInDate": "2024-07-20",
+    "checkOutDate": "2024-07-24",
+    "specialRequest": "Require a room with a view of the pool. Please ensure the room has a microwave.",
+    "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+        "https://i.imgur.com/qgLYOQn.jpeg",
+        "https://i.imgur.com/4quqP9B.jpeg",
+        "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+        "AC",
+        "Wifi",
+        "Cleaning",
+        "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+    },
+    "status": "Check In"
+    },
+    {
+    "id": 20,
+    "name": "Ella Adams",
+    "orderDate": "2024-07-10",
+    "checkInDate": "2024-07-22",
+    "checkOutDate": "2024-07-28",
+    "specialRequest": "Please provide extra toiletries and a bathrobe. Need a room with an extra bed.",
+    "room": {
+        "id": 3,
+        "roomNumber": "103",
+        "description": "Spacious double superior room with balcony.",
+        "photos": [
+        "https://i.imgur.com/qgLYOQn.jpeg",
+        "https://i.imgur.com/4quqP9B.jpeg",
+        "https://i.imgur.com/tXBYF1F.jpeg"
+        ],
+        "roomType": "Double Superior",
+        "amenities": [
+        "AC",
+        "Wifi",
+        "Cleaning",
+        "Towels"
+        ],
+        "price": 500,
+        "discount": 0,
+        "status": "Available"
+    },
+    "status": "Check Out"
+    }
+]
+

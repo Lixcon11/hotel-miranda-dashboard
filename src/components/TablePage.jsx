@@ -77,7 +77,7 @@ const TablePage = ({ pageData }) => {
                         {pageArray[page].map((row, i) => 
                             <tr key={i}>
                                 {columns.map((column, j) => {
-                                    if(column.button) {
+                                    if(column.isButton) {
                                         return <td key={j}>{column.display ? column.display(row, editHandler) : row[column.property]}</td>
                                     }
                                     else {

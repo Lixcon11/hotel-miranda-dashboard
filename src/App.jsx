@@ -13,10 +13,12 @@ import { DetailsOfAny } from "./components/DetailsOfAny"
 import { CreateAny } from "./components/CreateAny"
 import { contactsPageData } from "./modules/contacts/functions/contactsPageData"
 import { roomsPageData } from "./modules/rooms/functions/roomsPageData"
+import { bookingsPageData } from "./modules/bookings/functions/bookingsPageData"
 
 const usersData = usersPageData;
 const contactsData = contactsPageData;
 const roomsData = roomsPageData;
+const bookingsData = bookingsPageData;
 
 const App = () => {
   return (
@@ -28,10 +30,10 @@ const App = () => {
               <Route path="/" element={<PrivateRoute><Navbar/></PrivateRoute>}>
                 <Route path="dashboard" element={<Dashboard/>}/>
 
-                <Route path="bookings" element={<TablePage/>}/>
-                <Route path="bookings/create" element={<CreateAny/>}/>
-                <Route path="bookings/:id" element={<DetailsOfAny/>}/>
-                <Route path="bookings/:id/edit" element={<EditAny/>}/>
+                <Route path="bookings" element={<TablePage pageData={bookingsData}/>}/>
+                <Route path="bookings/create" element={<CreateAny pageData={bookingsData}/>}/>
+                <Route path="bookings/:id" element={<DetailsOfAny pageData={bookingsData}/>}/>
+                <Route path="bookings/:id/edit" element={<EditAny pageData={bookingsData}/>}/>
 
                 <Route path="rooms" element={<TablePage pageData={roomsData}/>}/>
                 <Route path="rooms/create" element={<CreateAny pageData={roomsData}/>}/>

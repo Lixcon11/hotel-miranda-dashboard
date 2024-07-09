@@ -10,7 +10,7 @@ const formats = createFormat(
                 <p>{contact.comment}</p>
             </>
         )},
-        {label: "Action", button: true, display: (contact, editHandler) => (
+        {label: "Action", isButton: true, display: (contact, editHandler) => (
             <button onClick={() => editHandler({id: contact.id, status: contact.status === "Published" ? "Archived": "Published"})}>
                 {contact.status === "Published" ? "Archive": "Publish"}
             </button>
