@@ -7,12 +7,14 @@ import { Back } from "./Back";
 import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import { useGet } from "../hooks/useGet";
+import React from "react";
+import { DataState } from "../types";
 
 const EditAny = ({ pageData }) => {
     const { name, crud, loading } = pageData()
     const { id } = useParams();
-    const obj = useGet(name, crud, id)
-    const [variable, setVariable] = useState();
+    const obj = useGet(name, crud, Number(id))
+    const [variable, setVariable] = useState<DataState>();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { authDispatch, authState } = useContext(AuthContext);
@@ -24,7 +26,7 @@ const EditAny = ({ pageData }) => {
     },[obj]);
 
     const nameList = useMemo(()=>{
-        const newList= []
+        const newList: string[]= []
         for(let i in obj) {
             if(i !== "id" && i !=="password") {
                 newList.push(i)
@@ -33,7 +35,7 @@ const EditAny = ({ pageData }) => {
         return newList;
     }, [obj])
 
-    const submitHandler = e => {
+    const submitHandler = (e: any) => {
         e.preventDefault()
         const newObj = {...obj}
         nameList.map(name => newObj[name] = e.target[name].value)
@@ -50,7 +52,7 @@ const EditAny = ({ pageData }) => {
 
     return (
         <>
-            <Page title={`Edit ${name.slice(0, -1)}`}>
+            <Page title={`Edit ${name.slice(0, -1)}`} textHandler={() => null}>
                 {!loading && variable ? 
                 <>
                     <StyledForm onSubmit={submitHandler}>

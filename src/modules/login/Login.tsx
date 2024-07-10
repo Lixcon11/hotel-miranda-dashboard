@@ -4,26 +4,25 @@ import { AuthContext } from "../../components/AuthContext"
 import { useSelector } from "react-redux"
 import { usersPageData } from "../users/functions/usersPageData"
 import React from "react"
+import { RootState } from "../../types"
 
 const Login = () => {
-    const context = useContext(AuthContext);
-    let authDispatch = context !== null ? context.authDispatch: null;
-    let authState = context !== null ? context.authState: null;
+    const { authState, authDispatch } = useContext(AuthContext);
 
     usersPageData();
-    const { data } = useSelector(state => state.users)
+    const { data } = useSelector((state: RootState) => state.users)
 
     const submitHandler = (e: any) => {
         e.preventDefault();
         const name = e.target.name.value;
         const password = e.target.password.value;
         const user = data.filter(user => user.name === name && user.password === password)[0];
-        if(authDispatch !== null && user) {
+        if(user) {
             authDispatch({type: "logIn", payload: {name: user.name, photo: user.photo, email: user.email, id: user.id, isLoggedIn: true}})
         }
     }
 
-    if(authState !== null && !authState.isLoggedIn){
+    if(!authState.isLoggedIn){
         return (
             <>
                 <h1>Login</h1>

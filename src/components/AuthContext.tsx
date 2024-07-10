@@ -1,11 +1,14 @@
 import { createContext } from "react";
-import { AuthAction, AuthState } from "./AuthProvider";
+import { AuthContextType } from "../types";
 
-type AuthContextType  = { 
-    authState: AuthState;
-    authDispatch: React.Dispatch<AuthAction>;
+const empty = {
+    name: "",
+    email: "",
+    isLoggedIn: false,
+    photo: "",
+    id: 0
 }
 
-const AuthContext = createContext<AuthContextType | null>(null);
+const AuthContext = createContext<AuthContextType>({authState: empty, authDispatch: () => null});
 
-export {AuthContext, AuthContextType }
+export {AuthContext}

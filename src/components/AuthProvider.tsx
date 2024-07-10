@@ -1,21 +1,9 @@
 import { useEffect, useReducer } from "react";
 import { AuthContext } from "./AuthContext";
 import React from "react";
+import { AuthAction, AuthState } from "../types";
 
 const AUTH_KEY = "auth"
-
-type AuthState  = {
-  name?: string;
-  email?: string;
-  isLoggedIn?: boolean;
-  photo?: string;
-  id?: number;
-}
-
-type AuthAction = 
-  | { type: "logIn"; payload: AuthState }
-  | { type: "logOut" }
-  | { type: "updateUser"; payload: Partial<AuthState> };
 
 const AuthProvider = ({children}) => {
   const authReducer = (state: AuthState, action: AuthAction) => {
@@ -48,4 +36,4 @@ const AuthProvider = ({children}) => {
   )
 }
 
-export { AuthProvider, AuthState, AuthAction}
+export { AuthProvider}
