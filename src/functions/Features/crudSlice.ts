@@ -3,10 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import { pendingCase } from "./pendingCase";
 import { rejectedCase } from "./rejectedCase";
 import { fullfilledResponse } from "./fullfilledResponse";
+import { SliceState } from "../../types";
 
-const crudSlice = (data, name) => {
+const crudSlice = (data: object, name: string) => {
 
-    const upperPlural = name.charAt(0).toUpperCase() + name.slice(1, name.lenght)
+    const upperPlural = name.charAt(0).toUpperCase() + name.slice(1, name.length)
     const upperSingular = upperPlural.slice(0, -1)
 
     const fetchThunk = thunk(`${name}/fetch${upperPlural}`, "fetch", data)
@@ -15,14 +16,16 @@ const crudSlice = (data, name) => {
     const updateThunk = thunk(`${name}/update${upperSingular}`, "update")
     const deleteThunk = thunk(`${name}/delete${upperSingular}`, "delete")
 
+    const initialState: SliceState = {
+        status: "idle",
+        data: [],
+        single: [],
+        error: null
+    }
+
     const slice = createSlice({
         name: name,
-        initialState: {
-            status: "idle",
-            data: [],
-            single: [],
-            error: null
-        },
+        initialState: initialState,
         reducers: {},
         extraReducers: builder => {
             builder
@@ -36,7 +39,6 @@ const crudSlice = (data, name) => {
             .addCase(getThunk.fulfilled, (state, action) => {
                 fullfilledResponse(state);
                 state.single = state.data.filter(r => r.id == action.payload)
-                //[action.payload];
             })
             .addCase(getThunk.pending, pendingCase())
             .addCase(getThunk.rejected, rejectedCase())

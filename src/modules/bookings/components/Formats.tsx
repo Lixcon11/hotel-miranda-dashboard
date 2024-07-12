@@ -5,6 +5,7 @@ import { ImageContainerTable } from "../../../styles/ImageContainerTable";
 import { MediumImg } from "../../../styles/MediumImg";
 import { ImageProfile } from "../../../styles/ImageProfile";
 import styled from "styled-components";
+import React from "react";
 
 const formats = createFormat(
     [
@@ -12,7 +13,7 @@ const formats = createFormat(
         {label: "Order Date", property: "orderDate", sort: "orderDate"},
         {label: "Check In", property: "checkInDate", sort: "checkInDate"},
         {label: "Check Out", property: "checkOutDate", sort: "checkOutDate"},
-        {label: "Special Request", isButton: true, display: (booking) => {
+        {label: "Special Request", isButton: true, display: (booking: object) => {
             return (
             <button>
                 View Notes

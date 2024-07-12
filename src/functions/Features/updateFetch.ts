@@ -1,6 +1,6 @@
 import { delay } from "./delay";
 
-const updateThunk = async data => {
+const updateThunk = async (data: object) => {
     try {
         const response = await delay(data)
         return response;

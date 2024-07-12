@@ -1,8 +1,8 @@
 import { delay } from "./delay";
 
-const getThunk = async data => {
+const getThunk = async (id: number) => {
     try {
-        const response = await delay(data)
+        const response = await delay(id)
         return response;
     }
     catch(e) {

@@ -1,8 +1,8 @@
-type DataState = any;
+type DataState = any; //TODO: change to 4 compositions of users, contacts, rooms and bookings
 
 
 type SliceState = {
-    status: "iddle" | "pending" | "fullfiled" | "rejected";
+    status: "idle" | "pending" | "fullfiled" | "rejected";
     data: DataState[];
     single: DataState[];
     error: null | string;
