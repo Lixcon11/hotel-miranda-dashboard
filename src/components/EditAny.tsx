@@ -14,7 +14,7 @@ const EditAny = ({ pageData }) => {
     const { name, crud, loading } = pageData()
     const { id } = useParams();
     const obj = useGet(name, crud, Number(id))
-    const [variable, setVariable] = useState<DataState>();
+    const [variable, setVariable] = useState<DataState>({...obj});
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { authDispatch, authState } = useContext(AuthContext);

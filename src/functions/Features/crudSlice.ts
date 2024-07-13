@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { pendingCase } from "./pendingCase";
 import { rejectedCase } from "./rejectedCase";
 import { fullfilledResponse } from "./fullfilledResponse";
-import { SliceState } from "../../types";
+import { DataState, SliceState, UserState } from "../../types";
 
-const crudSlice = (data: object, name: string) => {
+const crudSlice = <T extends DataState>(data: object[], name: string) => {
 
     const upperPlural = name.charAt(0).toUpperCase() + name.slice(1, name.length)
     const upperSingular = upperPlural.slice(0, -1)
@@ -16,7 +16,7 @@ const crudSlice = (data: object, name: string) => {
     const updateThunk = thunk(`${name}/update${upperSingular}`, "update")
     const deleteThunk = thunk(`${name}/delete${upperSingular}`, "delete")
 
-    const initialState: SliceState = {
+    const initialState: SliceState<T> = {
         status: "idle",
         data: [],
         single: [],

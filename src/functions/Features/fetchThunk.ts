@@ -1,6 +1,7 @@
+import { DataState } from "../../types";
 import { delay } from "./delay";
 
-const fetchThunk = async data => {
+const fetchThunk = async (data: any[]) => {
     try {
         const response = await delay(data)
         return response;

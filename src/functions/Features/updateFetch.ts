@@ -1,6 +1,7 @@
+import { DataState } from "../../types";
 import { delay } from "./delay";
 
-const updateThunk = async (data: object) => {
+const updateThunk = async (data: DataState) => {
     try {
         const response = await delay(data)
         return response;
