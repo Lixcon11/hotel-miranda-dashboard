@@ -1,4 +1,4 @@
-const delay = data => {
+const delay = (data: any) => {
     return new Promise((resolve) => {
         setTimeout(()=> {
             resolve(data);

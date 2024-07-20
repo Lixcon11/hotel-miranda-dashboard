@@ -1,5 +1,5 @@
 const pendingCase = () => (
-    (state) => {
+    (state: any) => {
         state.status = "pending";
         state.error = null;
     }

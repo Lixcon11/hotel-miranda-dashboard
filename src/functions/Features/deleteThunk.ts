@@ -1,6 +1,6 @@
 import { delay } from "./delay";
 
-const deleteThunk = async data => {
+const deleteThunk = async (data: number | string) => {
     try {
         const response = await delay(data)
         return response;

@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { pendingCase } from "./pendingCase";
 import { rejectedCase } from "./rejectedCase";
 import { fullfilledResponse } from "./fullfilledResponse";
-import { DataState, SliceState, UserState } from "../../types";
+import { DataState, SliceState } from "../../types";
 
-const crudSlice = <T extends DataState>(data: object[], name: string) => {
+const crudSlice = <T extends DataState>(data: T[], name: string) => {
 
     const upperPlural = name.charAt(0).toUpperCase() + name.slice(1, name.length)
     const upperSingular = upperPlural.slice(0, -1)
