@@ -1,11 +1,23 @@
 import { thunk } from "./thunk"
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, Slice } from "@reduxjs/toolkit";
 import { pendingCase } from "./pendingCase";
 import { rejectedCase } from "./rejectedCase";
 import { fullfilledResponse } from "./fullfilledResponse";
 import { DataState, SliceState } from "../../types";
 
-const crudSlice = <T extends DataState>(data: T[], name: string) => {
+
+type CrudSliceReturn = [
+    Slice<any>,
+    {
+      toFetch: ReturnType<typeof thunk>,
+      toGet: ReturnType<typeof thunk>,
+      toCreate: ReturnType<typeof thunk>,
+      toUpdate: ReturnType<typeof thunk>,
+      toDelete: ReturnType<typeof thunk>
+    }
+  ];
+
+const crudSlice = <T extends DataState>(data: T[], name: string): CrudSliceReturn => {
 
     const upperPlural = name.charAt(0).toUpperCase() + name.slice(1, name.length)
     const upperSingular = upperPlural.slice(0, -1)

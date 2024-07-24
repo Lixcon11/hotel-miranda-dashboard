@@ -99,4 +99,8 @@ type AuthContextType  = {
     authDispatch: React.Dispatch<AuthAction>;
 }
 
+type DataPackage = {
+    
+}
+
 export {RootState, SliceState, AuthState, AuthAction, AuthContextType, DataState, UserState, ContactState, BookingState, RoomState}
