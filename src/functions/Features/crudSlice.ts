@@ -55,7 +55,6 @@ const crudSlice = <T extends DataState>(data: T[], name: string): CrudSliceRetur
                         break;
                     }
                 }
-                console.log(action.payload)
                 state.data.push({id: newId, ...action.payload})
             })
             .addCase(createThunk.pending, pendingCase())

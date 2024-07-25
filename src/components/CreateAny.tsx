@@ -68,7 +68,6 @@ const CreateAny = ({ pageData }: CreateAnyProps) => {
                 }
             }
         })
-        console.log(newObj)
 
         dispatch(crud.toCreate(newObj))
         navigate(-1)

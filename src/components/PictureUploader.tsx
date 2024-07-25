@@ -29,7 +29,7 @@ const PictureUploader = ( {name, isBed}: PictureUploaderProps ) => {
     <ImageDisplayer $isBed={isBed}>
       <div>
         {image ? 
-          isBed ? <BedImage /*src={image}*/ alt="Bed"/> : <ImageProfile /*src={image}*/ alt="Profile"/>
+          isBed ? <BedImage src={typeof image === "string" ? image: undefined} alt="Bed"/> : <ImageProfile src={typeof image === "string" ? image: undefined} alt="Profile"/>
          : (
           <div>
             No Image
