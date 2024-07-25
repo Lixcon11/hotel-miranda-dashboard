@@ -1,4 +1,6 @@
-const sortBy = (string, data) => {
+import { DataState } from "../types";
+
+const sortBy = (string: string, data: DataState[]): DataState[] => {
 
     const newData = [...data];
 

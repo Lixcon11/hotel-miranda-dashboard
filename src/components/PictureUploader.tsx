@@ -2,10 +2,19 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { BedImage, ImageProfile } from '../styles/ImageProfile';
 
-const PictureUploader = ( {name, isBed} ) => {
-  const [image, setImage] = useState(null);
+type  ImageDisplayerProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  $isBed?: boolean;
+}
 
-  const handleImageChange = (e) => {
+type PictureUploaderProps = {
+  name: string;
+  isBed: boolean;
+}
+
+const PictureUploader = ( {name, isBed}: PictureUploaderProps ) => {
+  const [image, setImage] = useState<string | ArrayBuffer | null>(null);
+
+  const handleImageChange = (e: any) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -20,7 +29,7 @@ const PictureUploader = ( {name, isBed} ) => {
     <ImageDisplayer $isBed={isBed}>
       <div>
         {image ? 
-          isBed ? <BedImage src={image} alt="Bed"/> : <ImageProfile src={image} alt="Profile"/>
+          isBed ? <BedImage /*src={image}*/ alt="Bed"/> : <ImageProfile /*src={image}*/ alt="Profile"/>
          : (
           <div>
             No Image
@@ -35,7 +44,7 @@ const PictureUploader = ( {name, isBed} ) => {
   );
 };
 
-const ImageDisplayer = styled.div`
+const ImageDisplayer = styled.div<ImageDisplayerProps>`
 text-align: center;
 margin-top: 20px;
 margin-bottom: 20px;

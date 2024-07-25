@@ -1,21 +1,9 @@
 import { thunk } from "./thunk"
-import { createSlice, Slice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { pendingCase } from "./pendingCase";
 import { rejectedCase } from "./rejectedCase";
 import { fullfilledResponse } from "./fullfilledResponse";
-import { DataState, SliceState } from "../../types";
-
-
-type CrudSliceReturn = [
-    Slice<any>,
-    {
-      toFetch: ReturnType<typeof thunk>,
-      toGet: ReturnType<typeof thunk>,
-      toCreate: ReturnType<typeof thunk>,
-      toUpdate: ReturnType<typeof thunk>,
-      toDelete: ReturnType<typeof thunk>
-    }
-  ];
+import { CrudSliceReturn, DataState, SliceState } from "../../types";
 
 const crudSlice = <T extends DataState>(data: T[], name: string): CrudSliceReturn => {
 

@@ -1,3 +1,7 @@
+import { Slice } from "@reduxjs/toolkit";
+import { thunk } from "./functions/features/thunk";
+import { ThunkAction, ThunkDispatch } from "@reduxjs/toolkit";
+
 type IdObject = {
     id: number
 }
@@ -77,10 +81,6 @@ type SliceState<T extends DataState> = {
     error: null | string;
 }
 
-type RootState = {
-    users: SliceState<UserState>;
-}
-
 type AuthState  = {
     name?: string;
     email?: string;
@@ -99,8 +99,43 @@ type AuthContextType  = {
     authDispatch: React.Dispatch<AuthAction>;
 }
 
-type DataPackage = {
-    
+type Crud = {
+    toFetch: ReturnType<typeof thunk>,
+    toGet: ReturnType<typeof thunk>,
+    toCreate: ReturnType<typeof thunk>,
+    toUpdate: ReturnType<typeof thunk>,
+    toDelete: ReturnType<typeof thunk>
 }
 
-export {RootState, SliceState, AuthState, AuthAction, AuthContextType, DataState, UserState, ContactState, BookingState, RoomState}
+type CrudSliceReturn = [
+    Slice<any>, Crud
+];
+
+type Display = {
+    label?: string;
+    property?: string;
+    display?: (arr: any, arrr: any) => any;
+    isButton?: boolean;
+    isImage?: boolean;
+    isCheckbox?: boolean;
+    sort?: string;
+    toFilter?: string;
+}
+
+type Formats = {
+    columns: Display[];
+    detailsFormat: Display[];
+    createFormat: Display[];
+    filtersList: Display[];
+}
+
+type DataPackage = Formats & {
+    name: string;
+    crud: Crud;
+    loading: any;
+    sortDefault: string;
+    filterDefault: string | undefined;
+    searchFilter: string;
+}
+
+export {SliceState, AuthState, AuthAction, AuthContextType, DataState, UserState, ContactState, BookingState, RoomState, CrudSliceReturn, Crud, Display, Formats, DataPackage, Amenitie}

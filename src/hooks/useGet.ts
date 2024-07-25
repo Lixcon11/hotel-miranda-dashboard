@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DataState } from "../types";
+import { Crud, DataState } from "../types";
+import { AppDispatch } from "../store";
 
-const useGet = (name: string, crud: any, id: number) => {
-    const dispatch = useDispatch()
+const useGet = (name: string, crud: Crud, id: number) => {
+    const dispatch: AppDispatch  = useDispatch()
     const obj = useSelector((state: DataState) => state[name].single)[0]
     
     useEffect(() => {

@@ -1,13 +1,15 @@
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Crud, DataState } from "../types";
+import { AppDispatch } from "../store";
 
-const useLoading = (name, crud) => {
-    const dispatch = useDispatch()
-    const {status, error} = useSelector(state => state[name])
+const useLoading = (name: string, crud: Crud): boolean => {
+    const dispatch: AppDispatch = useDispatch()
+    const {status, error} = useSelector((state: DataState) => state[name])
     
     const loading = useMemo(() => {
         if(status === "idle") {
-            dispatch(crud.toFetch())
+            dispatch(crud.toFetch(0))
         }
         if(status === "pending") {
             return true;

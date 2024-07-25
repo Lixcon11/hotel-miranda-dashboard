@@ -6,8 +6,9 @@ import { MediumImg } from "../../../styles/MediumImg";
 import { ImageProfile } from "../../../styles/ImageProfile";
 import styled from "styled-components";
 import React from "react";
+import { Formats } from "../../../types";
 
-const formats = createFormat(
+const NewFormats: Formats = createFormat(
     [
         {label: "Guest", property: "name", sort: "name"},
         {label: "Order Date", property: "orderDate", sort: "orderDate"},
@@ -50,4 +51,4 @@ const Night = styled.div`
 //display: flex;
 `
 
-export { formats }
+export { NewFormats }

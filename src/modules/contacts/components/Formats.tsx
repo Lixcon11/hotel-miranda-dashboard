@@ -1,7 +1,8 @@
 import { createFormat } from "../../../functions/createFormats";
 import React from "react";
+import { Formats } from "../../../types";
 
-const formats = createFormat(
+const NewFormats: Formats = createFormat(
     [
         {label: "Date", property: "date"},
         {label: "Customer", property: "name"},
@@ -42,4 +43,4 @@ const formats = createFormat(
     ]
 )
 
-export { formats }
+export { NewFormats }

@@ -4,8 +4,10 @@ import { ImageContainerTable } from "../../../styles/ImageContainerTable";
 import { MediumImg } from "../../../styles/MediumImg";
 import { PictureUploader } from "../../../components/PictureUploader";
 import { amenities } from "../functions/amenities";
+import { Formats } from "../../../types";
+import React from 'react';
 
-const Formats = createFormat(
+const NewFormats: Formats = createFormat(
     [
         {label: "Room Number", display: room => (
             <>
@@ -98,4 +100,4 @@ const Night = styled.div`
 display: flex;
 `
 
-export { Formats }
+export { NewFormats }

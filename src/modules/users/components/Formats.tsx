@@ -4,8 +4,10 @@ import { createFormat } from "../../../functions/createFormats";
 import { ImageContainerTable } from "../../../styles/ImageContainerTable";
 import { MediumImg } from "../../../styles/MediumImg";
 import { ImageProfile } from "../../../styles/ImageProfile";
+import { Formats } from "../../../types";
+import React from 'react';
 
-const formats = createFormat(
+const NewFormats: Formats = createFormat(
     [
         {label: "Name", display: user => (
             <>
@@ -43,7 +45,7 @@ const formats = createFormat(
         {label: "Status", property: "status"}
     ],
     [
-        {property: "photo", display: (name) => <PictureUploader name={name}/>, isImage: true},
+        {property: "photo", display: (name) => <PictureUploader name={name} isBed={false}/>, isImage: true},
         {label: "Name", property: "name"},
         {label: "Email", property: "email"},
         {label: "Phone", property: "phone"},
@@ -60,4 +62,4 @@ const formats = createFormat(
     ]
 )
 
-export { formats }
+export { NewFormats }
