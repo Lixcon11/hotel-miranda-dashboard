@@ -114,7 +114,7 @@ type CrudSliceReturn = [
 type Display = {
     label?: string;
     property?: string;
-    display?: (arr: any, arrr: any) => any;
+    display?: (arr?: any, arrr?: any) => any;
     isButton?: boolean;
     isImage?: boolean;
     isCheckbox?: boolean;
@@ -132,10 +132,14 @@ type Formats = {
 type DataPackage = Formats & {
     name: string;
     crud: Crud;
-    loading: any;
+    loading: boolean;
     sortDefault: string;
     filterDefault: string | undefined;
     searchFilter: string;
 }
 
-export {SliceState, AuthState, AuthAction, AuthContextType, DataState, UserState, ContactState, BookingState, RoomState, CrudSliceReturn, Crud, Display, Formats, DataPackage, Amenitie}
+type RootState = {
+    users: SliceState<UserState>;
+}
+
+export {SliceState, AuthState, AuthAction, AuthContextType, DataState, UserState, ContactState, BookingState, RoomState, CrudSliceReturn, Crud, Display, Formats, DataPackage, Amenitie, RootState}

@@ -7,28 +7,41 @@ import { StyledTable } from "../styles/StyledTable";
 import { filterBy } from "../functions/filterBy";
 import { sortBy } from "../functions/sortBy";
 import { CreateButton } from "../styles/CreateButton";
+import React from "react";
+import { DataPackage, DataState } from "../types";
+import { AppDispatch } from "../store";
 
-const TablePage = ({ pageData }) => {
+type TablePageProps = {
+    pageData: () => DataPackage
+}
+
+type Filter = {
+    type: string | undefined;
+    word: string;
+    searchOn: string;
+}
+
+const TablePage = ({ pageData }: TablePageProps) => {
     const { name, columns, filtersList, crud, loading, sortDefault, filterDefault, searchFilter } = pageData()
-    const [sort, setSort] = useState (sortDefault);
-    const [filter, setFilter] = useState ({type: filterDefault, word: "", searchOn: searchFilter});
-    const dispatch = useDispatch();
-    const { data } = useSelector(state => state[name])
-    const [page, setPage] = useState(0)
+    const [sort, setSort] = useState<string>(sortDefault);
+    const [filter, setFilter] = useState<Filter>({type: filterDefault, word: "", searchOn: searchFilter});
+    const dispatch: AppDispatch = useDispatch();
+    const { data } = useSelector((state: DataState) => state[name])
+    const [page, setPage] = useState<number>(0)
 
     useEffect(() => {
         setSort(sortDefault);
         setFilter({type: filterDefault, word: "", searchOn: searchFilter})
     }, [sortDefault, searchFilter])
     
-    const pageArray = useMemo(() => {
-        let newArray = [...data]
+    const pageArray: DataState[][] = useMemo(() => {
+        let newArray: DataState[] = [...data]
         if(sort || filter) {
             newArray = filterBy(filter, newArray);
             newArray = sortBy(sort, newArray);
         }
 
-        const pageArray = []
+        const pageArray: any[] = []
         const pageSize = 10;
         while(newArray.length > pageSize) {
             pageArray.push(newArray.splice(0, pageSize))
@@ -39,15 +52,15 @@ const TablePage = ({ pageData }) => {
         return pageArray;
     }, [filter, sort, data])
 
-    const deleteHandler = id => {
+    const deleteHandler = (id: number) => {
         dispatch(crud.toDelete(id))
     }
 
-    const editHandler = obj => {
+    const editHandler = (obj: any) => {
         dispatch(crud.toUpdate(obj))
     }
     
-    const textHandler = e => {
+    const textHandler = (e: any) => {
         e.preventDefault()
         const { value } = e.target.input;
         setFilter(filterParams => ({...filterParams, word: value}))
@@ -69,7 +82,7 @@ const TablePage = ({ pageData }) => {
                     <thead>
                         <tr>
                             {columns.map((column, i) => (
-                                <th key={i}>{column.label}{column.sort ? <button onClick={()=>setSort(column.sort)}>sort</button>: null}</th>
+                                <th key={i}>{column.label}{column.sort ? <button onClick={()=>setSort(column.sort ? column.sort: "")}>sort</button>: null}</th>
                             ))}
                         </tr>
                     </thead>
@@ -78,10 +91,10 @@ const TablePage = ({ pageData }) => {
                             <tr key={i}>
                                 {columns.map((column, j) => {
                                     if(column.isButton) {
-                                        return <td key={j}>{column.display ? column.display(row, editHandler) : row[column.property]}</td>
+                                        return <td key={j}>{column.display ? column.display(row, editHandler) : row[column.property ? column.property: 0]}</td>
                                     }
                                     else {
-                                        return <td key={j}><NavLink to={`./${row.id}`}>{column.display ? column.display(row, editHandler) : row[column.property]}</NavLink></td>
+                                        return <td key={j}><NavLink to={`./${row.id}`}>{column.display ? column.display(row, editHandler) : row[column.property ? column.property: 0]}</NavLink></td>
                                     }
                                 })}
                                 <td><button onClick={() =>deleteHandler(row.id)}>Delete</button></td>

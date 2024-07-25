@@ -1,4 +1,3 @@
-import { DataState } from "../../types";
 import { delay } from "./delay";
 
 const createThunk = async (data: object) => {

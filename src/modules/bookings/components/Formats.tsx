@@ -1,9 +1,4 @@
-import { useState } from "react";
-import { PictureUploader } from "../../../components/PictureUploader";
 import { createFormat } from "../../../functions/createFormats";
-import { ImageContainerTable } from "../../../styles/ImageContainerTable";
-import { MediumImg } from "../../../styles/MediumImg";
-import { ImageProfile } from "../../../styles/ImageProfile";
 import styled from "styled-components";
 import React from "react";
 import { Formats } from "../../../types";

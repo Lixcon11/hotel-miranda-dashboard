@@ -5,13 +5,20 @@ import { Back } from "./Back"
 import { useDispatch } from "react-redux"
 import styled from "styled-components"
 import { useGet } from "../hooks/useGet"
+import React from "react"
+import { DataPackage } from "../types"
+import { AppDispatch } from "../store"
 
-const DetailsOfAny = ({ pageData}) => {
+type DetailsOfAnyProps = {
+    pageData: () => DataPackage
+}
+
+const DetailsOfAny = ({ pageData }: DetailsOfAnyProps) => {
     const { id } = useParams();
     const { name, crud, detailsFormat, loading } = pageData()
-    const dispatch = useDispatch();
+    const dispatch: AppDispatch = useDispatch();
     const navigate = useNavigate();
-    const obj = useGet(name, crud, id)
+    const obj = useGet(name, crud, parseInt(id ? id: "0"))
 
     const deleteHandler = () => {
         dispatch(crud.toDelete(obj.id))
@@ -20,7 +27,7 @@ const DetailsOfAny = ({ pageData}) => {
 
     return (
         <> 
-            <Page title={`${name.slice(0, -1)} Details`}>
+            <Page title={`${name.slice(0, -1)} Details`} textHandler={null}>
                 {!loading && obj ?
                 <>
                     {detailsFormat.map((field, i) => field.display ? <Center key={i}>{field.label ? <p>{field.label + ":"}&nbsp;</p>: null}{field.display(obj, i)}</Center> : <p key={i}>{field.label + ": " + obj[field.property]}</p>)}
