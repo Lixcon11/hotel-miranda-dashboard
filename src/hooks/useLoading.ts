@@ -9,7 +9,7 @@ const useLoading = (name: string, crud: Crud): boolean => {
     
     const loading = useMemo(() => {
         if(status === "idle") {
-            dispatch(crud.toFetch(0))
+            dispatch(crud.toFetch())
         }
         if(status === "pending") {
             return true;

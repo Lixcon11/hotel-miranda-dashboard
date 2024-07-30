@@ -18,7 +18,7 @@ const DetailsOfAny = ({ pageData }: DetailsOfAnyProps) => {
     const { name, crud, detailsFormat, loading } = pageData()
     const dispatch: AppDispatch = useDispatch();
     const navigate = useNavigate();
-    const obj = useGet(name, crud, parseInt(id ? id: "0"))
+    const obj = useGet(name, crud, (id ? id: "0"))
 
     const deleteHandler = () => {
         dispatch(crud.toDelete(obj.id))

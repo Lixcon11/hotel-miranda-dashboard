@@ -7,6 +7,6 @@ import { getThunk } from "./getThunk";
 import { DataState } from "../../types";
 
 const thunks = {fetch: fetchThunk, get: getThunk, create: createThunk ,update: updateThunk ,delete: deleteThunk}
-const thunk = (text: string, type: string, data: DataState[] = []) => createAsyncThunk(text, async (passingData: number | object) => thunks[type](data[0] ? data: passingData))
+const thunk = (text: string, type: string/*, data: DataState[] = []*/, path: string) => createAsyncThunk(text, async (passingData?: string | object) => thunks[type](/*data[0] ? data:*/path, passingData))
 
 export { thunk }

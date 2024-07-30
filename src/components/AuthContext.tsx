@@ -6,7 +6,8 @@ const empty = {
     email: "",
     isLoggedIn: false,
     photo: "",
-    id: 0
+    id: 0,
+    token: ""
 }
 
 const AuthContext = createContext<AuthContextType>({authState: empty, authDispatch: () => null});

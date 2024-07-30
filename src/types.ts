@@ -1,9 +1,8 @@
 import { Slice } from "@reduxjs/toolkit";
 import { thunk } from "./functions/features/thunk";
-import { ThunkAction, ThunkDispatch } from "@reduxjs/toolkit";
 
 type IdObject = {
-    id: number
+    _id: string
 }
 
 type Amenitie = 
@@ -86,7 +85,8 @@ type AuthState  = {
     email?: string;
     isLoggedIn?: boolean;
     photo?: string;
-    id?: number;
+    _id?: string;
+    token?: string;
 }
   
 type AuthAction = 

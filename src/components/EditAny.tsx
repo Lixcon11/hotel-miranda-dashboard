@@ -13,7 +13,7 @@ import { DataState } from "../types";
 const EditAny = ({ pageData }) => {
     const { name, crud, loading } = pageData()
     const { id } = useParams();
-    const obj = useGet(name, crud, Number(id))
+    const obj = useGet(name, crud, String(id))
     const [variable, setVariable] = useState<DataState>({...obj});
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const EditAny = ({ pageData }) => {
         dispatch(crud.toUpdate(newObj))
         
         if(name === "users") {
-            if(authState.id === obj.id) {
+            if(authState._id === obj.id) {
                 authDispatch({type: "updateUser", payload: {name: newObj.name, photo: newObj.photo, email: newObj.email}})
                 console.log(authState)
             }

@@ -10,11 +10,11 @@ const crudSlice = <T extends DataState>(data: T[], name: string): CrudSliceRetur
     const upperPlural = name.charAt(0).toUpperCase() + name.slice(1, name.length)
     const upperSingular = upperPlural.slice(0, -1)
 
-    const fetchThunk = thunk(`${name}/fetch${upperPlural}`, "fetch", data)
-    const getThunk = thunk(`${name}/get${upperSingular}`, "get")
-    const createThunk = thunk(`${name}/create${upperSingular}`, "create")
-    const updateThunk = thunk(`${name}/update${upperSingular}`, "update")
-    const deleteThunk = thunk(`${name}/delete${upperSingular}`, "delete")
+    const fetchThunk = thunk(`${name}/fetch${upperPlural}`, "fetch"/*, data*/, name)
+    const getThunk = thunk(`${name}/get${upperSingular}`, "get", name)
+    const createThunk = thunk(`${name}/create${upperSingular}`, "create", name)
+    const updateThunk = thunk(`${name}/update${upperSingular}`, "update", name)
+    const deleteThunk = thunk(`${name}/delete${upperSingular}`, "delete", name)
 
     const initialState: SliceState<T> = {
         status: "idle",
@@ -38,13 +38,14 @@ const crudSlice = <T extends DataState>(data: T[], name: string): CrudSliceRetur
 
             .addCase(getThunk.fulfilled, (state, action) => {
                 fullfilledResponse(state);
-                state.single = state.data.filter(r => r.id == action.payload)
+                state.single = state.data.filter(r => r._id == action.payload)
             })
             .addCase(getThunk.pending, pendingCase())
             .addCase(getThunk.rejected, rejectedCase())
     
             .addCase(createThunk.fulfilled, (state, action) => {
                 fullfilledResponse(state);
+                /*
                 const idList = state.data.map(obj => obj.id).sort((a, b) => a - b);
                 let newId = 1;
                 for (let id of idList) {
@@ -55,21 +56,23 @@ const crudSlice = <T extends DataState>(data: T[], name: string): CrudSliceRetur
                         break;
                     }
                 }
-                state.data.push({id: newId, ...action.payload})
+                */
+                //state.data.push({id: newId, ...action.payload})
+                state.data.push(action.payload)
             })
             .addCase(createThunk.pending, pendingCase())
             .addCase(createThunk.rejected, rejectedCase())
     
             .addCase(updateThunk.fulfilled, (state, action) => {
                 fullfilledResponse(state);
-                state.data = state.data.map(r => r.id === action.payload.id ? {...r, ...action.payload} : r)
+                state.data = state.data.map(r => r._id === action.payload.id ? {...r, ...action.payload} : r)
             })
             .addCase(updateThunk.pending, pendingCase())
             .addCase(updateThunk.rejected, rejectedCase())
     
             .addCase(deleteThunk.fulfilled, (state, action) => {
                 fullfilledResponse(state);
-                state.data = state.data.filter(r => r.id !== action.payload)
+                state.data = state.data.filter(r => r._id !== action.payload)
             })
             .addCase(deleteThunk.pending, pendingCase())
             .addCase(deleteThunk.rejected, rejectedCase())
