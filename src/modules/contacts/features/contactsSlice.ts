@@ -1,9 +1,9 @@
 import { crudSlice } from "../../../functions/features/crudSlice";
 import { ContactState } from "../../../types";
-import contactsData from "../data/contactsData.json"
+//import contactsData from "../data/contactsData.json"
 
-const data: ContactState[] = contactsData as ContactState[]
+///const data: ContactState[] = contactsData as ContactState[]
 
-const [ contactsSlice, crud ] = crudSlice<ContactState>(data ,"contacts");
+const [ contactsSlice, crud ] = crudSlice<ContactState>(/*data ,*/"contacts");
 
 export { contactsSlice, crud }

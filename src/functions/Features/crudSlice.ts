@@ -5,7 +5,7 @@ import { rejectedCase } from "./rejectedCase";
 import { fullfilledResponse } from "./fullfilledResponse";
 import { CrudSliceReturn, DataState, SliceState } from "../../types";
 
-const crudSlice = <T extends DataState>(data: T[], name: string): CrudSliceReturn => {
+const crudSlice = <T extends DataState>(/*data: T[],*/ name: string): CrudSliceReturn => {
 
     const upperPlural = name.charAt(0).toUpperCase() + name.slice(1, name.length)
     const upperSingular = upperPlural.slice(0, -1)
@@ -38,7 +38,8 @@ const crudSlice = <T extends DataState>(data: T[], name: string): CrudSliceRetur
 
             .addCase(getThunk.fulfilled, (state, action) => {
                 fullfilledResponse(state);
-                state.single = state.data.filter(r => r._id == action.payload)
+                //state.single = state.data.filter(r => r._id == action.payload)
+                state.single = action.payload
             })
             .addCase(getThunk.pending, pendingCase())
             .addCase(getThunk.rejected, rejectedCase())
