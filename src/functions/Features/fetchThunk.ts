@@ -4,13 +4,15 @@ import "dotenv/config";
 import { useContext } from "react";
 import { AuthContext } from "../../components/AuthContext";
 
-const fetchThunk = async ( path: string) => {
+const fetchThunk = async (path: string) => {
     const url = `${process.env.REACT_APP_API_URL}/${path}`;
     const { authState } = useContext(AuthContext);
     try {
         const response = await fetch(url, {
+            method: "GET",
             headers: {
-                'Authorization': `Token ${authState.token}`
+                'Authorization': `Token ${authState.token}`,
+                'Content-Type': 'application/json'
             }
     })
 
@@ -18,12 +20,11 @@ const fetchThunk = async ( path: string) => {
             const json = await response.json();
             return json;
         }
-
-        console.log("Error")
+        console.error(`Error: ${response.status} ${response.statusText}`);
         return null;
     }
     catch(e) {
-        console.log(e)
+        console.error(`Fetch error: ${e.message}`);
         return null;
     }
 }

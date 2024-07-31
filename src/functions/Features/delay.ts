@@ -1,3 +1,4 @@
+/*
 const delay = (data: any) => {
     return new Promise((resolve) => {
         setTimeout(()=> {
@@ -7,3 +8,4 @@ const delay = (data: any) => {
 }
 
 export { delay }
+*/
