@@ -1,12 +1,8 @@
-//import { DataState } from "../../types";
-//import { delay } from "./delay";
-import "dotenv/config";
-import { useContext } from "react";
-import { AuthContext } from "../../components/AuthContext";
+import { AuthState } from "../../types";
 
 const fetchThunk = async (path: string) => {
-    const url = `${process.env.REACT_APP_API_URL}/${path}`;
-    const { authState } = useContext(AuthContext);
+    const url = `${import.meta.env.VITE_API_DOMAIN}/${path}`;
+    const authState: AuthState = JSON.parse(localStorage.getItem("auth") as string)
     try {
         const response = await fetch(url, {
             method: "GET",
@@ -18,12 +14,13 @@ const fetchThunk = async (path: string) => {
 
         if(response.ok) {
             const json = await response.json();
-            return json;
+            const jsonData = json[path]
+            return jsonData;
         }
         console.error(`Error: ${response.status} ${response.statusText}`);
         return null;
     }
-    catch(e) {
+    catch(e: any) {
         console.error(`Fetch error: ${e.message}`);
         return null;
     }

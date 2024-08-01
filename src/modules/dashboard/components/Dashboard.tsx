@@ -1,9 +1,9 @@
 import { Page } from "../../../components/Page"
 
-const Dashboard = () => {
+const Dashboard = ({children}) => {
     return (
         <>
-            <Page title="Dashboard"></Page>
+            <Page title="Dashboard" textHandler={null}>{children}</Page>
         </>
     )
 }

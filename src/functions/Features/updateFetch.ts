@@ -1,29 +1,9 @@
-/*
-import { DataState } from "../../types";
-import { delay } from "./delay";
-
-const updateThunk = async (data: DataState) => {
-    try {
-        const response = await delay(data)
-        return response;
-    }
-    catch(e) {
-        console.log(e)
-        return null;
-    }
-}
-
-export { updateThunk }*/
-
-import { useContext } from "react";
-import { AuthContext } from "../../components/AuthContext";
-import { DataState } from "../../types";
-import "dotenv/config";
+import { AuthState, DataState } from "../../types";
 
 const updateThunk = async (path: string, data: DataState) => {
     const { _id } = data;
-    const url = `${process.env.REACT_APP_API_URL}/${path}/${_id}`;
-    const { authState } = useContext(AuthContext);
+    const url = `${import.meta.env.VITE_API_DOMAIN}/${path}/${_id}`;
+    const authState: AuthState = JSON.parse(localStorage.getItem("auth") as string)
 
     try {
         const response = await fetch(url, {
@@ -37,12 +17,13 @@ const updateThunk = async (path: string, data: DataState) => {
 
         if (response.ok) {
             const json = await response.json();
-            return json;
+            const jsonData = json[path.slice(0, -1)]
+            return jsonData;
         } 
         console.error(`Error: ${response.status} ${response.statusText}`);
         return null;
         
-    } catch (e) {
+    } catch (e: any) {
         console.error(`Fetch error: ${e.message}`);
         return null;
     }

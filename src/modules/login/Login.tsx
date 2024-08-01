@@ -2,15 +2,14 @@ import { useContext } from "react"
 import { Navigate } from "react-router-dom"
 import { AuthContext } from "../../components/AuthContext"
 //import { useSelector } from "react-redux"
-import { usersPageData } from "../users/functions/usersPageData"
-import React from "react"
+//import { usersPageData } from "../users/functions/usersPageData"
+//import React from "react"
 //import { RootState, UserState } from "../../types"
-import "dotenv/config";
 
 const Login = () => {
     const { authState, authDispatch } = useContext(AuthContext);
 
-    usersPageData();
+    //usersPageData();
     //const { data } = useSelector((state: RootState) => state.users)
 
     const submitHandler = async (e: any) => {
@@ -19,7 +18,7 @@ const Login = () => {
         const password = e.target.password.value;
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
+            const response = await fetch(`${import.meta.env.VITE_API_DOMAIN}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -42,7 +41,7 @@ const Login = () => {
                 console.log(errorData)
             }
         }
-        catch(e) {
+        catch(e:any) {
             console.log(e)
         }
         /*

@@ -7,10 +7,9 @@ import { Back } from "./Back";
 import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import { useGet } from "../hooks/useGet";
-import React from "react";
 import { DataState } from "../types";
 
-const EditAny = ({ pageData }) => {
+const EditAny = ({ pageData }: any) => {
     const { name, crud, loading } = pageData()
     const { id } = useParams();
     const obj = useGet(name, crud, String(id))

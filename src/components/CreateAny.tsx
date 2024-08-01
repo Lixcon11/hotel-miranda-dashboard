@@ -3,7 +3,6 @@ import { Page } from "./Page";
 import { useDispatch } from "react-redux";
 import { Back } from "./Back";
 import { amenities } from "../modules/rooms/functions/amenities";
-import React from "react";
 import { AppDispatch } from "../store";
 import { DataPackage, Display } from "../types";
 
@@ -19,7 +18,7 @@ const CreateAny = ({ pageData }: CreateAnyProps) => {
     const submitHandler = (e: any) => {
         e.preventDefault()
 
-        const newObj = {}
+        const newObj: any = {}
         createFormat.map((r: Display) => {
             if(r.property) {
                 if(!r.isImage && !r.isCheckbox) {
@@ -68,7 +67,6 @@ const CreateAny = ({ pageData }: CreateAnyProps) => {
                 }
             }
         })
-
         dispatch(crud.toCreate(newObj))
         navigate(-1)
     };

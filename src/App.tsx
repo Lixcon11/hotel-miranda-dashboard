@@ -29,7 +29,7 @@ const App = () => {
           <AuthProvider>
             <Routes>
               <Route path="/" element={<PrivateRoute><Navbar/></PrivateRoute>}>
-                <Route path="dashboard" element={<Dashboard/>}/>
+                <Route path="dashboard" element={<Dashboard>{null}</Dashboard>}/>
 
                 <Route path="bookings" element={<TablePage pageData={bookingsData}/>}/>
                 <Route path="bookings/create" element={<CreateAny pageData={bookingsData}/>}/>

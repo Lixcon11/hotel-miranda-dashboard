@@ -1,4 +1,4 @@
-import { crudSlice } from "../../../functions/features/crudSlice";
+import { crudSlice } from "../../../functions/Features/crudSlice";
 import { RoomState } from "../../../types";
 //import roomsData from "../data/roomsData.json"
 

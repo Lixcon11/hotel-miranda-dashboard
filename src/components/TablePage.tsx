@@ -7,7 +7,6 @@ import { StyledTable } from "../styles/StyledTable";
 import { filterBy } from "../functions/filterBy";
 import { sortBy } from "../functions/sortBy";
 import { CreateButton } from "../styles/CreateButton";
-import React from "react";
 import { DataPackage, DataState } from "../types";
 import { AppDispatch } from "../store";
 
@@ -28,7 +27,6 @@ const TablePage = ({ pageData }: TablePageProps) => {
     const dispatch: AppDispatch = useDispatch();
     const { data } = useSelector((state: DataState) => state[name])
     const [page, setPage] = useState<number>(0)
-
     useEffect(() => {
         setSort(sortDefault);
         setFilter({type: filterDefault, word: "", searchOn: searchFilter})
@@ -52,7 +50,7 @@ const TablePage = ({ pageData }: TablePageProps) => {
         return pageArray;
     }, [filter, sort, data])
 
-    const deleteHandler = (id: number) => {
+    const deleteHandler = (id: string) => {
         dispatch(crud.toDelete(id))
     }
 
@@ -94,10 +92,10 @@ const TablePage = ({ pageData }: TablePageProps) => {
                                         return <td key={j}>{column.display ? column.display(row, editHandler) : row[column.property ? column.property: 0]}</td>
                                     }
                                     else {
-                                        return <td key={j}><NavLink to={`./${row.id}`}>{column.display ? column.display(row, editHandler) : row[column.property ? column.property: 0]}</NavLink></td>
+                                        return <td key={j}><NavLink to={`./${row._id}`}>{column.display ? column.display(row, editHandler) : row[column.property ? column.property: 0]}</NavLink></td>
                                     }
                                 })}
-                                <td><button onClick={() =>deleteHandler(row.id)}>Delete</button></td>
+                                <td><button onClick={() =>deleteHandler(row._id)}>Delete</button></td>
                             </tr>
                         )}
                     </tbody>

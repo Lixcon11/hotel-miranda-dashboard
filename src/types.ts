@@ -1,5 +1,5 @@
 import { Slice } from "@reduxjs/toolkit";
-import { thunk } from "./functions/features/thunk";
+import { thunk } from "./functions/Features/thunk";
 
 type IdObject = {
     _id: string
@@ -142,4 +142,4 @@ type RootState = {
     users: SliceState<UserState>;
 }
 
-export {SliceState, AuthState, AuthAction, AuthContextType, DataState, UserState, ContactState, BookingState, RoomState, CrudSliceReturn, Crud, Display, Formats, DataPackage, Amenitie, RootState}
+export type {SliceState, AuthState, AuthAction, AuthContextType, DataState, UserState, ContactState, BookingState, RoomState, CrudSliceReturn, Crud, Display, Formats, DataPackage, Amenitie, RootState}

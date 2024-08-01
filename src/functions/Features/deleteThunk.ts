@@ -1,29 +1,8 @@
-
-/*
-import { delay } from "./delay";
-
-const deleteThunk = async (id:string) => {
-    try {
-        const response = await delay(id)
-        return response;
-    }
-    catch(e) {
-        console.log(e)
-        return null;
-    }
-}
-
-export { deleteThunk }*/
-
-
-import { useContext } from "react";
-import { AuthContext } from "../../components/AuthContext";
-import "dotenv/config";
+import { AuthState } from "../../types";
 
 const deleteThunk = async (path: string, id: string) => {
-    const url = `${process.env.REACT_APP_API_URL}/${path}/${id}`;
-    const { authState } = useContext(AuthContext);
-
+    const url = `${import.meta.env.VITE_API_DOMAIN}/${path}/${id}`;
+    const authState: AuthState = JSON.parse(localStorage.getItem("auth") as string)
     try {
         const response = await fetch(url, {
             method: "DELETE",
@@ -35,12 +14,13 @@ const deleteThunk = async (path: string, id: string) => {
 
         if (response.ok) {
             const json = await response.json();
-            return json;
+            const jsonData = json.id
+            return jsonData;
         }
         console.error(`Error: ${response.status} ${response.statusText}`);
         return null;
         
-    } catch (e) {
+    } catch (e: any) {
         console.error(`Fetch error: ${e.message}`);
         return null;
     }

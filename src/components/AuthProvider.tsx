@@ -1,11 +1,10 @@
 import { useEffect, useReducer } from "react";
 import { AuthContext } from "./AuthContext";
-import React from "react";
 import { AuthAction, AuthState } from "../types";
 
 const AUTH_KEY = "auth"
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({children}: any) => {
   const authReducer = (state: AuthState, action: AuthAction) => {
     switch(action.type) {
       case "logIn": 

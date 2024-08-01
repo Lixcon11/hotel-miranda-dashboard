@@ -1,6 +1,5 @@
 import { createFormat } from "../../../functions/createFormats";
 import styled from "styled-components";
-import React from "react";
 import { Formats } from "../../../types";
 
 const NewFormats: Formats = createFormat(

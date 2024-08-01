@@ -5,11 +5,11 @@ import { AppDispatch } from "../store";
 
 const useLoading = (name: string, crud: Crud): boolean => {
     const dispatch: AppDispatch = useDispatch()
-    const {status, error} = useSelector((state: DataState) => state[name])
+    const {status, error} = useSelector((state: any) => state[name])
     
     const loading = useMemo(() => {
         if(status === "idle") {
-            dispatch(crud.toFetch())
+            dispatch(crud.toFetch(""))
         }
         if(status === "pending") {
             return true;

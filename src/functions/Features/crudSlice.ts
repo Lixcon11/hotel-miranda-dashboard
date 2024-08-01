@@ -5,12 +5,12 @@ import { rejectedCase } from "./rejectedCase";
 import { fullfilledResponse } from "./fullfilledResponse";
 import { CrudSliceReturn, DataState, SliceState } from "../../types";
 
-const crudSlice = <T extends DataState>(/*data: T[],*/ name: string): CrudSliceReturn => {
+const crudSlice = <T extends DataState>(name: string): CrudSliceReturn => {
 
     const upperPlural = name.charAt(0).toUpperCase() + name.slice(1, name.length)
     const upperSingular = upperPlural.slice(0, -1)
 
-    const fetchThunk = thunk(`${name}/fetch${upperPlural}`, "fetch"/*, data*/, name)
+    const fetchThunk = thunk(`${name}/fetch${upperPlural}`, "fetch", name)
     const getThunk = thunk(`${name}/get${upperSingular}`, "get", name)
     const createThunk = thunk(`${name}/create${upperSingular}`, "create", name)
     const updateThunk = thunk(`${name}/update${upperSingular}`, "update", name)
@@ -38,7 +38,6 @@ const crudSlice = <T extends DataState>(/*data: T[],*/ name: string): CrudSliceR
 
             .addCase(getThunk.fulfilled, (state, action) => {
                 fullfilledResponse(state);
-                //state.single = state.data.filter(r => r._id == action.payload)
                 state.single = action.payload
             })
             .addCase(getThunk.pending, pendingCase())
@@ -46,19 +45,6 @@ const crudSlice = <T extends DataState>(/*data: T[],*/ name: string): CrudSliceR
     
             .addCase(createThunk.fulfilled, (state, action) => {
                 fullfilledResponse(state);
-                /*
-                const idList = state.data.map(obj => obj.id).sort((a, b) => a - b);
-                let newId = 1;
-                for (let id of idList) {
-                    if(id === newId) {
-                        newId++;
-                    } 
-                    else {
-                        break;
-                    }
-                }
-                */
-                //state.data.push({id: newId, ...action.payload})
                 state.data.push(action.payload)
             })
             .addCase(createThunk.pending, pendingCase())

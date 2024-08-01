@@ -5,7 +5,6 @@ import { Back } from "./Back"
 import { useDispatch } from "react-redux"
 import styled from "styled-components"
 import { useGet } from "../hooks/useGet"
-import React from "react"
 import { DataPackage } from "../types"
 import { AppDispatch } from "../store"
 

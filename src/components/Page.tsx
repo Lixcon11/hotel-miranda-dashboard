@@ -2,7 +2,6 @@ import { useContext } from "react"
 import styled from "styled-components"
 import { AuthContext } from "./AuthContext"
 import { MiniImageProfile } from "../styles/ImageProfile"
-import React from "react"
 
 const StyledHeader = styled.header`
 width: 100%;

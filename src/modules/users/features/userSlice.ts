@@ -1,4 +1,4 @@
-import { crudSlice } from "../../../functions/features/crudSlice";
+import { crudSlice } from "../../../functions/Features/crudSlice";
 import { UserState } from "../../../types";
 //import userData from "../data/usersData.json"
 
