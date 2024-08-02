@@ -10,11 +10,11 @@ const crudSlice = <T extends DataState>(name: string): CrudSliceReturn => {
     const upperPlural = name.charAt(0).toUpperCase() + name.slice(1, name.length)
     const upperSingular = upperPlural.slice(0, -1)
 
-    const fetchThunk = thunk(`${name}/fetch${upperPlural}`, "fetch", name)
-    const getThunk = thunk(`${name}/get${upperSingular}`, "get", name)
-    const createThunk = thunk(`${name}/create${upperSingular}`, "create", name)
-    const updateThunk = thunk(`${name}/update${upperSingular}`, "update", name)
-    const deleteThunk = thunk(`${name}/delete${upperSingular}`, "delete", name)
+    const fetchThunk = thunk(`${name}/fetch${upperPlural}`, "GET", name)
+    const getThunk = thunk(`${name}/get${upperSingular}`, "GET", name)
+    const createThunk = thunk(`${name}/create${upperSingular}`, "POST", name)
+    const updateThunk = thunk(`${name}/update${upperSingular}`, "PATCH", name)
+    const deleteThunk = thunk(`${name}/delete${upperSingular}`, "DELETE", name)
 
     const initialState: SliceState<T> = {
         status: "idle",
@@ -38,7 +38,7 @@ const crudSlice = <T extends DataState>(name: string): CrudSliceReturn => {
 
             .addCase(getThunk.fulfilled, (state, action) => {
                 fullfilledResponse(state);
-                state.single = action.payload
+                state.single = [action.payload]
             })
             .addCase(getThunk.pending, pendingCase())
             .addCase(getThunk.rejected, rejectedCase())

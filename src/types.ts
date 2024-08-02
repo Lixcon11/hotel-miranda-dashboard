@@ -142,4 +142,6 @@ type RootState = {
     users: SliceState<UserState>;
 }
 
-export type {SliceState, AuthState, AuthAction, AuthContextType, DataState, UserState, ContactState, BookingState, RoomState, CrudSliceReturn, Crud, Display, Formats, DataPackage, Amenitie, RootState}
+type Method = "GET" | "POST" |"PUT" | "PATCH" | "DELETE"
+
+export type {SliceState, AuthState, AuthAction, AuthContextType, DataState, UserState, ContactState, BookingState, RoomState, CrudSliceReturn, Crud, Display, Formats, DataPackage, Amenitie, RootState, Method}

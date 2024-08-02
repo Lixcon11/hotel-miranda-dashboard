@@ -1,12 +1,33 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { deleteThunk } from "./deleteThunk";
-import { fetchThunk } from "./fetchThunk";
-import { updateThunk } from "./updateFetch";
-import { createThunk } from "./createThunk";
-import { getThunk } from "./getThunk";
-import { DataState } from "../../types";
+import { AuthState, DataState, Method } from "../../types";
+import { callAPI } from "./callAPI";
 
-const thunks: any = {fetch: fetchThunk, get: getThunk, create: createThunk ,update: updateThunk ,delete: deleteThunk}
-const thunk = (text: string, type: string, path: string) => createAsyncThunk(text, async (passingData?: string | Partial<DataState> | DataState) => thunks[type](path, passingData))
+const thunk = (text: string, method: Method, path: string) => createAsyncThunk(text, async (passingData?: string | Partial<DataState> | DataState) => {
+    let url: string = `${import.meta.env.VITE_API_DOMAIN}/${path}/`
+    const { token } = JSON.parse(localStorage.getItem("auth") as string) as AuthState;
+
+    switch(method) {
+        case "PATCH":
+        case "PUT":
+            if(typeof passingData !== "string") {
+                url = url + passingData._id;
+                return callAPI(url, token, method, passingData)
+            }
+            break;
+        case "GET":
+        case "DELETE":
+            if(typeof passingData == "string") {
+                url = url + passingData;
+            }
+            return callAPI(url, token, method)
+        case "POST":
+            if(typeof passingData !== "string") {
+                return callAPI(url, token, method, passingData)
+            }
+            break;
+        default:
+            return null;
+    }
+})
 
 export { thunk }
