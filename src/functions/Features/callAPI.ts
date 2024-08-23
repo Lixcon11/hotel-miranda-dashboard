@@ -1,6 +1,8 @@
 import { DataState, Method } from "../../types";
 
-const callAPI = async (url: string, token: string, method: Method = "GET", data?: DataState | Partial<DataState>) => {
+const callAPI = async (url: string, token: string, method: Method = "GET", data?: any) => {
+    //console.log(data)
+    //console.log(data ? JSON.stringify(data): undefined)
     try {
         const response = await fetch(url, {
             method: method,

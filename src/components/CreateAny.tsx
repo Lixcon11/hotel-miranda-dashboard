@@ -15,11 +15,12 @@ const CreateAny = ({ pageData }: CreateAnyProps) => {
     const navigate = useNavigate();
     const dispatch: AppDispatch = useDispatch();
 
-    const submitHandler = (e: any) => {
+    const submitHandler = async (e: any) => {
         e.preventDefault()
 
         const newObj: any = {}
-        createFormat.map((r: Display) => {
+        const promises: Promise<void>[] = [];
+        createFormat.map( async (r: Display) => {
             if(r.property) {
                 if(!r.isImage && !r.isCheckbox) {
                     newObj[r.property] = e.target[r.property].value
@@ -37,13 +38,23 @@ const CreateAny = ({ pageData }: CreateAnyProps) => {
                     if(e.target[r.property]) {
                         const file = e.target[r.property].files[0];
                         if (file) {
-                            const reader = new FileReader();
-                            reader.readAsDataURL(file);
-                            reader.onloadend = () => {
-                                if(r.property) {
-                                    newObj[r.property] = reader.result;
-                                }
+                            const readFileAsDataURL = (file: any) => {
+                                return new Promise<string>((resolve, reject) => {
+                                    const reader = new FileReader();
+                                    reader.readAsDataURL(file);
+                                    reader.onloadend = () => {
+                                        resolve(reader.result as string);
+                                    };
+                                    reader.onerror = reject;
+                                });
                             };
+    
+                            promises.push(
+                                (async () => {
+                                    const result = await readFileAsDataURL(file);
+                                    newObj[r.property] = result;
+                                })()
+                            );
                         }
                     }
                     else {
@@ -51,15 +62,38 @@ const CreateAny = ({ pageData }: CreateAnyProps) => {
                         newObj[r.property] = []
                         while(e.target[r.property + index]) {
                             const file = e.target[r.property + index].files[0];
-                            console.log(file)
                             if (file) {
+                                /*
                                 const reader = new FileReader();
                                 reader.readAsDataURL(file);
                                 reader.onloadend = () => {
                                     if(r.property) {
-                                        newObj[r.property].push(reader.result);
+                                        if(typeof reader.result == "string") {
+                                            //newObj[r.property].push(reader.result);
+                                            newObj[r.property].push("https://i.imgur.com/28KBvCZ.png")
+                                        }
                                     }
                                 };
+                                */
+                                const readFileAsDataURL = (file: any) => {
+                                    return new Promise<string>((resolve, reject) => {
+                                        const reader = new FileReader();
+                                        reader.readAsDataURL(file);
+                                        reader.onloadend = () => {
+                                            resolve(reader.result as string);
+                                        };
+                                        reader.onerror = reject;
+                                    });
+                                };
+    
+                                promises.push(
+                                    (async () => {
+                                        const result = await readFileAsDataURL(file);
+                                        if (r.property && typeof result === "string") {
+                                            newObj[r.property].push(result);
+                                        }
+                                    })()
+                                );
                             }
                             index++;
                         }
@@ -67,6 +101,8 @@ const CreateAny = ({ pageData }: CreateAnyProps) => {
                 }
             }
         })
+        await Promise.all(promises);
+
         dispatch(crud.toCreate(newObj))
         navigate(-1)
     };
