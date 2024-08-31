@@ -109,9 +109,11 @@ const Button = styled.button`
     padding: 0.75rem;
     border: none;
     border-radius: 4px;
+    background-color: var(--green);
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    color: white;
 
     &:hover {
         background-color: #0056b3;
@@ -134,7 +136,7 @@ const TestCredentials = styled.div`
 
     span {
         font-weight: bold;
-        color: #007bff;
+        color:font-size: 14px;
     }
 `;
 
